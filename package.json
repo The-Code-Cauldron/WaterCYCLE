@@ -1,0 +1,12 @@
+{
+  "name": "watercycle",
+  "version": "1.0.0",
+  "description": "WaterCycle — Learning styles platform. VARK Thinkier quiz, four-style learning protocols.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
