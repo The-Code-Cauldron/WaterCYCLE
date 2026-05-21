@@ -1123,7 +1123,7 @@ function renderSynthesis(){
   const out=document.getElementById('synthesis-out');if(!out)return;
   const savedScores=localStorage.getItem('wc_scores');
   const p2=loadP2();
-  const varkType=savedScores?Object.entries(JSON.parse(savedScores)).sort((a,b)=>b[1]-a[1])[0][0]:null;
+  let varkType=null;try{varkType=savedScores?Object.entries(JSON.parse(savedScores)).sort((a,b)=>b[1]-a[1])[0][0]:null;}catch(_){}
   const bloodType=p2.bloodType||null;
   const rh=p2.rh||null;
   const bio=p2.bio||{};
@@ -1171,21 +1171,21 @@ function renderSynthesis(){
 
 // ── PHASE 2 INIT ─────────────────────────────────────────────────────────────
 (function initP2(){
-  const data=loadP2();
-  // Restore blood type
-  if(data.bloodType){
-    document.querySelectorAll('.bt-btn').forEach(b=>b.classList.toggle('sel',b.dataset.bt===data.bloodType));
-    renderBTProfile(data.bloodType);
-  }
-  if(data.rh){
-    document.querySelectorAll('.rh-btn').forEach(b=>b.classList.toggle('sel',b.dataset.rh===data.rh));
-  }
-  populateMarkerSelect();
-  // Set date to today
-  const di=document.getElementById('bio-date-inp');
-  if(di)di.value=new Date().toISOString().slice(0,10);
-  renderBioGrid();
-  renderSynthesis();
+  try{
+    const data=loadP2();
+    if(data.bloodType){
+      document.querySelectorAll('.bt-btn').forEach(b=>b.classList.toggle('sel',b.dataset.bt===data.bloodType));
+      renderBTProfile(data.bloodType);
+    }
+    if(data.rh){
+      document.querySelectorAll('.rh-btn').forEach(b=>b.classList.toggle('sel',b.dataset.rh===data.rh));
+    }
+    populateMarkerSelect();
+    const di=document.getElementById('bio-date-inp');
+    if(di)di.value=new Date().toISOString().slice(0,10);
+    renderBioGrid();
+    renderSynthesis();
+  }catch(_){}
 })();
 
 // ── FORM TABS ─────────────────────────────────────────────────────────────────
@@ -1487,17 +1487,25 @@ function setCircle(scale,durSec){
 initBreathing();
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
-// Restore from localStorage if previously completed
-const saved=localStorage.getItem('wc_scores');
-if(saved){
+function initQuiz(){
   try{
-    scores=JSON.parse(saved);
-    buildResults();
-    document.getElementById('quiz-ui').style.display='none';
-    document.getElementById('quiz-done').style.display='block';
+    const saved=localStorage.getItem('wc_scores');
+    if(saved){
+      try{
+        scores=JSON.parse(saved);
+        buildResults();
+        document.getElementById('quiz-ui').style.display='none';
+        document.getElementById('quiz-done').style.display='block';
+      }catch(_){ renderQ(); }
+    } else {
+      renderQ();
+    }
   }catch(_){ renderQ(); }
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initQuiz);
 } else {
-  renderQ();
+  initQuiz();
 }
 </script>
 </body>
