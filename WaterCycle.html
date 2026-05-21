@@ -213,9 +213,81 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 .cocoon-science-title{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--water);margin-bottom:12px;}
 .cocoon-science-text{font-size:0.85rem;color:var(--sub);line-height:1.8;}
 
+/* ── BLOOD TYPE ── */
+.bt-selector{display:flex;gap:10px;margin:28px 0 16px;flex-wrap:wrap;}
+.bt-btn{flex:1;min-width:100px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:20px 12px;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit;}
+.bt-btn:hover{border-color:rgba(34,211,238,.4);background:var(--bg4);}
+.bt-btn.sel{border-color:var(--water);background:rgba(34,211,238,.06);}
+.bt-big{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-bottom:4px;line-height:1;}
+.bt-lbl{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.bt-btn.sel .bt-lbl{color:var(--water);}
+.rh-row{display:flex;gap:8px;margin-bottom:28px;}
+.rh-btn{padding:9px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;cursor:pointer;font-size:0.82rem;font-weight:700;color:var(--muted);font-family:inherit;transition:all .15s;}
+.rh-btn:hover{border-color:rgba(34,211,238,.3);}
+.rh-btn.sel{border-color:var(--water);color:var(--water);background:rgba(34,211,238,.06);}
+.evid-warn{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.2);border-left:3px solid var(--aud);padding:14px 20px;font-size:0.82rem;color:var(--sub);line-height:1.75;margin:24px 0;}
+.evid-warn strong{color:var(--aud);display:block;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+.bt-profile{display:none;}
+.bt-profile.on{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin-top:28px;}
+.btp{background:var(--bg3);padding:28px;}
+.btp-tag{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sub);margin-bottom:8px;}
+.btp-h{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:10px;}
+.btp-t{font-size:0.85rem;color:var(--sub);line-height:1.75;}
+.btp-list{list-style:none;margin-top:10px;}
+.btp-list li{font-size:0.82rem;color:var(--sub);padding:4px 0;border-bottom:1px solid var(--border);}
+.btp-list li:last-child{border-bottom:none;}
+.btp-list li::before{content:'→ ';color:var(--water);}
+.btp-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.btp-chip{font-size:0.7rem;font-weight:600;color:var(--water);border:1px solid rgba(34,211,238,.25);padding:3px 10px;border-radius:50px;}
+
+/* ── BIOMARKER DASHBOARD ── */
+.bio-section{background:var(--bg);border-top:1px solid var(--border);}
+.bio-form-wrap{background:var(--bg3);border:1px solid var(--border);padding:24px 28px;margin:32px 0;border-radius:4px;}
+.bio-form-ttl{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--water);margin-bottom:14px;}
+.bio-row{display:grid;grid-template-columns:2fr 1fr 150px auto;gap:10px;align-items:end;}
+.bio-sel,.bio-inp{background:var(--bg4);border:1px solid var(--border);border-radius:4px;padding:10px 13px;color:var(--text);font-family:inherit;font-size:0.86rem;outline:none;transition:border-color .15s;width:100%;}
+.bio-sel:focus,.bio-inp:focus{border-color:var(--water);}
+.bio-add-btn{background:linear-gradient(135deg,var(--water3),var(--deep));color:#fff;border:none;border-radius:4px;padding:10px 20px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .15s;}
+.bio-add-btn:hover{opacity:.85;}
+.bio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);}
+.bio-card{background:var(--bg2);padding:22px 24px;}
+.bio-card-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.bio-name-lbl{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sub);}
+.bio-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:2px;}
+.bio-val{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:2px;}
+.bio-unit-lbl{font-size:0.7rem;color:var(--muted);}
+.bio-date-lbl{font-size:0.65rem;color:var(--muted);margin:6px 0 12px;}
+.bio-range-wrap{position:relative;height:6px;border-radius:3px;overflow:visible;margin:10px 0 4px;}
+.bio-range-bg{position:absolute;inset:0;border-radius:3px;}
+.bio-range-mk{position:absolute;top:-5px;width:16px;height:16px;border-radius:50%;border:2px solid var(--bg2);transform:translateX(-50%);transition:left .4s;}
+.bio-range-lbs{display:flex;justify-content:space-between;font-size:0.58rem;color:var(--muted);margin-bottom:10px;}
+.bio-interp{font-size:0.78rem;color:var(--sub);line-height:1.6;border-top:1px solid var(--border);padding-top:10px;margin-top:4px;}
+.bio-empty{background:var(--bg3);padding:22px 24px;text-align:center;}
+.bio-empty-n{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--border);margin-bottom:4px;}
+.bio-empty-h{font-size:0.72rem;color:var(--border);}
+
+/* ── SYNTHESIS ── */
+.synthesis{background:var(--bg2);border-top:1px solid var(--border);}
+.syn-card{background:var(--bg3);border:1px solid var(--border);padding:36px 40px;margin-top:32px;border-radius:4px;}
+.syn-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+.syn-badge{padding:7px 16px;border-radius:50px;font-size:0.75rem;font-weight:700;border:1px solid;letter-spacing:0.3px;}
+.syn-h{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:8px;}
+.syn-sub{font-size:0.82rem;color:var(--muted);margin-bottom:20px;font-style:italic;}
+.syn-body{font-size:0.92rem;color:var(--sub);line-height:1.9;}
+.syn-bio-section{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);}
+.syn-bio-ttl{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sub);margin-bottom:10px;}
+.syn-bio-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.syn-bio-chip{font-size:0.75rem;font-weight:700;padding:5px 12px;border-radius:50px;border:1px solid;}
+.syn-locked{text-align:center;padding:52px 24px;}
+.syn-locked-i{font-size:2.5rem;margin-bottom:14px;opacity:.2;}
+.syn-locked-t{font-size:0.9rem;color:var(--sub);margin-bottom:6px;}
+.syn-locked-s{font-size:0.78rem;color:var(--muted);}
+
 /* ── RESPONSIVE ── */
 @media(max-width:800px){
-  .phil-grid,.form-panel.on,.protocol-grid,.p2-grid,.cocoon-layout,.cocoon-phil-grid{grid-template-columns:1fr;}
+  .phil-grid,.form-panel.on,.protocol-grid,.p2-grid,.cocoon-layout,.cocoon-phil-grid,.bt-profile.on,.syn-card .grid{grid-template-columns:1fr;}
+  .bio-row{grid-template-columns:1fr 1fr;}.bio-row select{grid-column:1/-1;}.bio-row button{grid-column:1/-1;}
+  .bt-selector{gap:6px;}
   .form-panel-left{border-right:none;border-bottom:1px solid var(--border);}
   .quiz-options{grid-template-columns:1fr;}
   .forms-tabs{flex-wrap:wrap;}
@@ -231,9 +303,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">WaterCycle</a>
-    <a href="#forms" class="nav-lk">The Four Forms</a>
+    <a href="#forms" class="nav-lk">The Forms</a>
     <a href="#thinkier" class="nav-lk">The Thinkier</a>
-    <a href="#phase2" class="nav-lk">Phase 2</a>
+    <a href="#phase2" class="nav-lk">Blood Type</a>
+    <a href="#biomarkers" class="nav-lk">Biomarkers</a>
+    <a href="#synthesis" class="nav-lk">Your Profile</a>
     <a href="#cocoon" class="nav-lk">The Cocoon</a>
     <div class="sp"></div>
     <a href="#thinkier" class="nav-cta">Find Your Form →</a>
@@ -579,15 +653,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
   </div>
 </section>
 
-<!-- PHASE 2 -->
-<section id="phase2" class="phase2">
+<!-- PHASE 2A: BLOOD TYPE -->
+<section id="phase2" style="background:var(--bg2);border-top:1px solid var(--border);padding:90px 24px;">
   <div class="container">
-    <div class="eyebrow">What Comes Next</div>
-    <h2 class="section-title">Phase 2: Know your body.</h2>
-    <p class="section-sub">Phase 1 mapped your cognitive type. Phase 2 maps your biological type. Together they form a complete self-protocol. Stop guessing what works for you. Know.</p>
-    <div class="p2-grid">
-      <div class="p2-cell">
-        <div class="p2-phase">Phase 2A — Coming</div>
+    <div class="eyebrow">Phase 2A — Live</div>
+    <h2 class="section-title">Know your blood type.</h2>
+    <p class="section-sub">Phase 1 mapped your cognitive style. Phase 2 maps your biology. At-home blood typing kits (EldonCard, ~£3–8 on Amazon) determine your ABO type and Rh factor in four minutes. Select yours below. Saved to your device.</p>
+
+    <div class="evid-warn">
+      <strong>Evidence Status</strong>
+      The D'Adamo blood type diet theory (1996) is not supported by robust randomised controlled trial evidence. A 2013 PLOS ONE study found no association between ABO type and diet response. Individual variation in food and exercise response IS real — but blood type is not the established driver. WaterCycle presents this as a lens for self-experimentation. Not prescription. Phase 2B biomarker tracking is the legitimate clinical layer.
+    </div>
+
+    <div class="eyebrow" style="margin-bottom:10px;">Your ABO type</div>
+    <div class="bt-selector" id="bt-abo">
+      <button class="bt-btn" data-bt="O" onclick="selectBT('O')"><div class="bt-big">O</div><div class="bt-lbl">The Foundation</div></button>
+      <button class="bt-btn" data-bt="A" onclick="selectBT('A')"><div class="bt-big">A</div><div class="bt-lbl">The Cultivator</div></button>
+      <button class="bt-btn" data-bt="B" onclick="selectBT('B')"><div class="bt-big">B</div><div class="bt-lbl">The Nomad</div></button>
+      <button class="bt-btn" data-bt="AB" onclick="selectBT('AB')"><div class="bt-big">AB</div><div class="bt-lbl">The Enigma</div></button>
+    </div>
+    <div class="eyebrow" style="margin-bottom:10px;">Rh factor</div>
+    <div class="rh-row" id="bt-rh">
+      <button class="rh-btn" data-rh="+" onclick="selectRH('+')">Positive (+)</button>
+      <button class="rh-btn" data-rh="-" onclick="selectRH('-')">Negative (−)</button>
+    </div>
+    <div class="bt-profile" id="bt-profile"></div>
+
+    <!-- KEPT: Phase 2B teaser stub (hidden from view — actual section below) -->
+    <div style="display:none">
+      <div class="p2-phase">Phase 2A — Coming</div>
         <div class="p2-title">Self Blood Typing</div>
         <div class="p2-text">At-home blood typing kits (EldonCard and others) accurately determine your ABO blood type and Rh factor in four minutes for under £8. The D'Adamo blood type diet theory (1996) proposes that blood types respond differently to foods. The evidence is contested but individual variation in food response is real and partly genetic. WaterCycle Phase 2 uses blood type as a starting framework — not gospel — then builds on it with evidence-based biomarker tracking.</div>
         <div class="p2-markers">
@@ -610,12 +704,38 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
           <span class="p2-tag">Learning environment</span><span class="p2-tag">Diet protocol</span><span class="p2-tag">Study timing</span><span class="p2-tag">Stress management</span>
         </div>
       </div>
-      <div class="p2-cell" style="background:var(--bg4);border:1px dashed var(--border);">
-        <div class="p2-phase">The Philosophy</div>
-        <div class="p2-title">Wu Wei</div>
-        <div class="p2-text" style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.95rem;line-height:1.9;color:var(--sub);">"The student who reads when they are a Doer wastes effort. The Doer who finds their method — learns effortlessly.<br><br>The person who eats against their biology fights themselves at every meal. The person who eats with their biology stops noticing food as effort.<br><br>Water seeks the lowest path. It never pushes. Find your lowest path. Live without effort."</div>
+    </div><!-- end hidden stub -->
+  </div>
+</section>
+
+<!-- PHASE 2B: BIOMARKERS -->
+<section id="biomarkers" class="bio-section" style="padding:90px 24px;">
+  <div class="container">
+    <div class="eyebrow">Phase 2B — Live</div>
+    <h2 class="section-title">Track what your blood tells you.</h2>
+    <p class="section-sub">Log your blood test results. Everything is stored locally on this device only — nothing leaves this page. Build your personal baseline over time. Not medical advice. Self-awareness as infrastructure.</p>
+    <div class="bio-form-wrap">
+      <div class="bio-form-ttl">Add a reading</div>
+      <div class="bio-row">
+        <select class="bio-sel" id="bio-marker-sel"></select>
+        <input class="bio-inp" type="number" id="bio-val-inp" placeholder="Value" step="0.01" min="0">
+        <input class="bio-inp" type="date" id="bio-date-inp">
+        <button class="bio-add-btn" onclick="addReading()">Add →</button>
       </div>
+      <div id="bio-msg" style="font-size:0.78rem;color:var(--water);margin-top:8px;min-height:16px;"></div>
     </div>
+    <div class="bio-grid" id="bio-grid"></div>
+    <div style="margin-top:14px;text-align:center;font-size:0.72rem;color:var(--muted);">Data stored in browser localStorage only · <button onclick="clearBio()" style="background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:0.72rem;font-family:inherit;">Clear all biomarker data</button></div>
+  </div>
+</section>
+
+<!-- PHASE 3: SYNTHESIS -->
+<section id="synthesis" class="synthesis" style="padding:90px 24px;">
+  <div class="container">
+    <div class="eyebrow">Phase 3 — Your Complete Protocol</div>
+    <h2 class="section-title">The full picture.</h2>
+    <p class="section-sub">Complete The Thinkier and select your blood type to generate your personalised compound protocol — the intersection of how you learn and how your biology operates.</p>
+    <div id="synthesis-out"></div>
   </div>
 </section>
 
@@ -715,6 +835,277 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
   }
   resize();frame();
   window.addEventListener('resize',resize);
+})();
+
+// ── PHASE 2: BLOOD TYPE ──────────────────────────────────────────────────────
+const BT = {
+  O:{
+    name:'Type O — The Foundation', arch:'The Hunter', col:'#ef4444',
+    desc:'Type O is the oldest blood type evolutionarily. The D\'Adamo framework characterises it as "the Hunter" — adapted to high-protein food, direct action, and intense physical stress response.',
+    biology:['Higher stomach acid — protein digestion typically efficient','Stronger catecholamine (adrenaline) response under acute stress','Some studies suggest higher baseline inflammatory tendency','Lower risk of certain cardiovascular events vs other types (epidemiological)'],
+    dadamo:'Suggested framework (contested): lean protein and vegetables; potential sensitivity to grains and dairy in some individuals; benefits from intense physical exercise.',
+    study:'Responds best to short, high-intensity study blocks with deliberate physical movement between sessions. Cortisol response is sharp — harness it. Decompression is structural, not optional.',
+    exercise:'High-intensity exercise (running, weights, HIIT) suits Type O physiology. Movement is a stress valve — without it, cognitive performance degrades.',
+    watch:['crp','cortisol','ferritin'],
+  },
+  A:{
+    name:'Type A — The Cultivator', arch:'The Farmer', col:'#8b5cf6',
+    desc:'Type A emerged alongside settled agricultural life. The D\'Adamo framework characterises it as "the Farmer" — methodical, suited to structured routine and calmer physical activity.',
+    biology:['Lower average stomach acid than Type O — animal protein digestion may be less efficient','Slower cortisol clearance — chronic stress accumulates more readily','Higher epidemiological risk of pancreatic and gastric cancer','Detailed, methodical cognitive tendencies observed anecdotally'],
+    dadamo:'Suggested framework (contested): plant-based emphasis; smaller animal protein portions; responds well to calming exercise over high intensity.',
+    study:'Methodical and structured sessions. The Type A risk is cortisol accumulation — sustained study stress without adequate recovery creates sharp diminishing returns. Recovery is not optional. 90-minute maximum before deliberate rest.',
+    exercise:'Yoga, walking, swimming, cycling — sustained rhythmic movement. Intense exercise works but recovery is slower. Mind-body practices reduce the cortisol load that accumulates silently.',
+    watch:['crp','cortisol','hba1c'],
+  },
+  B:{
+    name:'Type B — The Nomad', arch:'The Explorer', col:'#f59e0b',
+    desc:'Type B is associated with nomadic populations. The D\'Adamo framework characterises it as "the Nomad" — adaptable, mentally flexible, suited to a varied diet and diverse physical activity.',
+    biology:['Strong tolerance for dairy products in many Type B individuals','Most adaptable immune profile of the four types','Moderate cardiovascular risk profile epidemiologically','High individual variability — more so than other types'],
+    dadamo:'Suggested framework (contested): most varied dietary tolerance; dairy generally well-tolerated; responds well to variety in food, exercise, and environment.',
+    study:'Benefits from varied environments and rotating methods. The Type B risk is stagnation — monotonous study in the same location with the same format produces sharp diminishing returns. Rotate. Move. Change.',
+    exercise:'Mind-body exercise suits Type B — yoga, tennis, cycling, hiking. Mix strength and cardio. Variety is the key principle. Single-activity monotony leads to inconsistency.',
+    watch:['tsh','cholesterol','b12'],
+  },
+  AB:{
+    name:'Type AB — The Enigma', arch:'The Modern', col:'#10b981',
+    desc:'Type AB is the rarest blood type, emerging relatively recently. The D\'Adamo framework calls it "the Enigma" — a genuine fusion of Type A and Type B characteristics, the most adaptive type.',
+    biology:['Combines properties of Type A and Type B','Can have lower stomach acid (like Type A)','Combined antigens provide certain immune advantages','Higher risk of pancreatic cancer in some epidemiological studies'],
+    dadamo:'Suggested framework (contested): small, frequent meals rather than large protein loads; mixture of Type A and B dietary approaches; individual variation is highest of all types.',
+    study:'Multi-modal by nature — adapts across learning styles more readily than other types. Benefits from structured variety: small sessions, different formats, deliberate transitions.',
+    exercise:'Calming exercise (yoga, tai chi) for stress management plus moderate aerobic activity. Find the intensity that energises rather than depletes.',
+    watch:['crp','hba1c','cortisol'],
+  },
+};
+
+const WC_KEY='watercycle_p2';
+function loadP2(){try{return JSON.parse(localStorage.getItem(WC_KEY))||{};}catch(e){return{};}}
+function saveP2(d){localStorage.setItem(WC_KEY,JSON.stringify(d));}
+
+function selectBT(type){
+  const data=loadP2(); data.bloodType=type; saveP2(data);
+  document.querySelectorAll('.bt-btn').forEach(b=>b.classList.toggle('sel',b.dataset.bt===type));
+  renderBTProfile(type);
+  renderSynthesis();
+}
+function selectRH(rh){
+  const data=loadP2(); data.rh=rh; saveP2(data);
+  document.querySelectorAll('.rh-btn').forEach(b=>b.classList.toggle('sel',b.dataset.rh===rh));
+}
+function renderBTProfile(type){
+  const p=document.getElementById('bt-profile');if(!p)return;
+  const bt=BT[type];if(!bt){p.className='bt-profile';return;}
+  p.className='bt-profile on';
+  p.innerHTML=`
+    <div class="btp">
+      <div class="btp-tag" style="color:${bt.col}">${bt.arch}</div>
+      <div class="btp-h">${bt.name}</div>
+      <div class="btp-t" style="margin-bottom:16px;">${bt.desc}</div>
+      <div class="btp-tag" style="margin-bottom:8px;">Biology — what we know</div>
+      <ul class="btp-list">${bt.biology.map(i=>`<li>${i}</li>`).join('')}</ul>
+      <div class="btp-t" style="margin-top:14px;font-size:0.75rem;border:1px solid rgba(245,158,11,.2);background:rgba(245,158,11,.04);padding:10px 14px;border-left:2px solid var(--aud);"><strong style="color:var(--aud);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">D'Adamo Framework — Contested</strong>${bt.dadamo}</div>
+    </div>
+    <div class="btp">
+      <div class="btp-tag">Study Protocol</div>
+      <div class="btp-h" style="font-size:0.95rem;">How your biology learns best</div>
+      <div class="btp-t" style="margin-bottom:20px;">${bt.study}</div>
+      <div class="btp-tag">Exercise Approach</div>
+      <div class="btp-t" style="margin-bottom:20px;">${bt.exercise}</div>
+      <div class="btp-tag">Watch These Biomarkers</div>
+      <div class="btp-chips">${bt.watch.map(id=>{const m=MARKERS.find(x=>x.id===id);return m?`<span class="btp-chip">${m.name}</span>`:''}).join('')}</div>
+    </div>`;
+}
+
+// ── BIOMARKER ENGINE ─────────────────────────────────────────────────────────
+const MARKERS=[
+  {id:'vit-d',name:'Vitamin D',unit:'nmol/L',min:0,max:150,
+    zones:[{max:25,label:'Deficient',col:'#ef4444'},{max:50,label:'Insufficient',col:'#f59e0b'},{max:75,label:'Adequate',col:'#84cc16'},{max:150,label:'Optimal',col:'#22c55e'}],
+    interp:{Deficient:'Severely low. Impacts mood, immune function, bone health, and cognitive focus. Associated with fatigue and brain fog. GP review and supplementation needed.',Insufficient:'Below optimal. Common in the UK, especially autumn to spring. May affect energy and mood. Consider supplementation.',Adequate:'Within functional range. Many researchers suggest 75–100 nmol/L as the optimal target for cognition and immunity.',Optimal:'Optimal range. Supports immune function, mood regulation, bone health, and cognitive performance.'},
+    context:'The sunshine vitamin. Critical for bone health, immune function, and cognitive performance. Most people in northern latitudes are insufficient without supplementation.'},
+  {id:'ferritin',name:'Ferritin',unit:'μg/L',min:0,max:200,
+    zones:[{max:15,label:'Depleted',col:'#ef4444'},{max:40,label:'Low',col:'#f59e0b'},{max:150,label:'Normal',col:'#22c55e'},{max:200,label:'Elevated',col:'#f59e0b'}],
+    interp:{Depleted:'Iron stores severely depleted. Hair loss, extreme fatigue, cold intolerance, and cognitive impairment are common. Iron supplementation and investigation required.',Low:'Iron stores are low. Even without clinical anaemia, low ferritin causes fatigue, poor focus, and reduced performance. Dietary review and supplementation warranted.',Normal:'Iron stores adequate. Many specialists target >50 μg/L as the functional threshold for energy and cognition.',Elevated:'Above expected range. Often indicates inflammation or liver stress rather than iron overload. Investigation recommended.'},
+    context:'The primary iron storage protein. Low ferritin is the most underdiagnosed cause of fatigue, hair loss, and cognitive impairment.'},
+  {id:'b12',name:'Vitamin B12',unit:'pg/mL',min:100,max:1000,
+    zones:[{max:200,label:'Deficient',col:'#ef4444'},{max:300,label:'Low-Normal',col:'#f59e0b'},{max:1000,label:'Adequate',col:'#22c55e'}],
+    interp:{Deficient:'B12 deficiency. Neurological symptoms, fatigue, poor memory, and mood changes are consequences. Urgent supplementation needed, particularly if vegetarian or vegan.',['Low-Normal']:'Borderline. Many practitioners treat <300 pg/mL as functionally low. Mood, memory, and energy often improve with supplementation.',Adequate:'Adequate B12. Essential for nerve function, DNA synthesis, and cognitive sharpness.'},
+    context:'Essential for the nervous system. Cannot be synthesised by the body. Vegans, vegetarians, and those on metformin are at highest risk of deficiency.'},
+  {id:'crp',name:'CRP',unit:'mg/L',min:0,max:50,
+    zones:[{max:5,label:'Normal',col:'#22c55e'},{max:10,label:'Mild',col:'#f59e0b'},{max:40,label:'Moderate',col:'#ea580c'},{max:50,label:'High',col:'#ef4444'}],
+    interp:{Normal:'No significant systemic inflammation detected.',Mild:'Mild elevation. May reflect lifestyle factors (sleep, diet, stress), minor infection, or tissue stress. Review indicated.',Moderate:'Moderate inflammation. Associated with increased cardiovascular and metabolic risk. Investigation and lifestyle intervention warranted.',High:'Significant inflammation. Likely active infection, autoimmune activity, or major physiological stress. Medical review needed.'},
+    context:'C-Reactive Protein is your inflammation marker. Chronically elevated CRP is linked to cardiovascular disease, metabolic dysfunction, and impaired cognitive performance.'},
+  {id:'hba1c',name:'HbA1c',unit:'mmol/mol',min:20,max:80,
+    zones:[{max:42,label:'Normal',col:'#22c55e'},{max:47,label:'Prediabetes',col:'#f59e0b'},{max:80,label:'Diabetic Range',col:'#ef4444'}],
+    interp:{Normal:'Blood sugar regulation is normal. HbA1c reflects average blood glucose over the previous 2–3 months.',Prediabetes:'In the prediabetic range. Diet, exercise, and weight management can reverse this trajectory. Early intervention is highly effective.',['Diabetic Range']:'Meets the diagnostic threshold for type 2 diabetes. Medical review and structured management plan required.'},
+    context:'Glycated haemoglobin reflects your average blood sugar over 2–3 months — more informative than a single fasting glucose test.'},
+  {id:'tsh',name:'TSH',unit:'mIU/L',min:0,max:10,
+    zones:[{max:0.5,label:'Low',col:'#f59e0b'},{max:4.5,label:'Normal',col:'#22c55e'},{max:10,label:'Elevated',col:'#ef4444'}],
+    interp:{Low:'Below normal range — suggests hyperthyroidism. Anxiety, palpitations, weight loss, heat intolerance. Endocrine review needed.',Normal:'Thyroid function normal. Many practitioners target TSH 1.0–2.5 for optimal energy and metabolism.',Elevated:'Elevated TSH — thyroid working harder than normal. Fatigue, weight gain, cold sensitivity, and cognitive fog are common. Thyroid review indicated.'},
+    context:'TSH is your pituitary\'s signal to the thyroid. It governs your metabolic rate, energy, body temperature, mood, and cognitive function.'},
+  {id:'cortisol',name:'Cortisol (AM)',unit:'nmol/L',min:50,max:700,
+    zones:[{max:166,label:'Low',col:'#f59e0b'},{max:507,label:'Normal',col:'#22c55e'},{max:700,label:'Elevated',col:'#ef4444'}],
+    interp:{Low:'Morning cortisol below expected range. Adrenal insufficiency or HPA axis dysregulation possible. Fatigue, poor stress tolerance, low blood pressure. Medical review indicated.',Normal:'Morning cortisol within normal range. The cortisol awakening response (rising cortisol 30–45 minutes after waking) is a healthy pattern.',Elevated:'Elevated morning cortisol. Chronic stress or poor sleep. Chronically elevated cortisol impairs memory formation, immune function, and metabolic health.'},
+    context:'Your primary stress hormone. Peaks in the morning. Chronic stress distorts this rhythm with significant consequences for cognition, immunity, and metabolism.'},
+  {id:'cholesterol',name:'Total Cholesterol',unit:'mmol/L',min:2,max:10,
+    zones:[{max:5.0,label:'Desirable',col:'#22c55e'},{max:6.2,label:'Borderline',col:'#f59e0b'},{max:10,label:'High',col:'#ef4444'}],
+    interp:{Desirable:'Total cholesterol within the desirable range. Review LDL/HDL ratio for the full picture.',Borderline:'Borderline elevated. Lifestyle modification (diet, exercise) is first-line before medication. LDL and HDL values are more informative.',High:'Elevated. Associated with increased cardiovascular risk. Lifestyle modification and medical review recommended.'},
+    context:'Total cholesterol is an entry-level marker. The HDL/LDL breakdown and triglycerides provide a more complete picture.'},
+  {id:'hdl',name:'HDL Cholesterol',unit:'mmol/L',min:0,max:3,
+    zones:[{max:1.0,label:'Low',col:'#ef4444'},{max:3,label:'Good',col:'#22c55e'}],
+    interp:{Low:'Low HDL reduces cardiovascular protection. Aerobic exercise and reducing trans fats can raise HDL levels.',Good:'Protective cholesterol in a healthy range. HDL above 1.6 mmol/L is considered very protective.'},
+    context:'HDL is the protective cholesterol. Higher is better. Exercise is one of the most effective ways to raise HDL.'},
+];
+
+function getStatus(markerId,value){
+  const m=MARKERS.find(x=>x.id===markerId);if(!m)return null;
+  for(const z of m.zones){if(value<=z.max)return{label:z.label,col:z.col};}
+  return{label:m.zones[m.zones.length-1].label,col:m.zones[m.zones.length-1].col};
+}
+function getRangePos(value,min,max){return Math.max(2,Math.min(98,(value-min)/(max-min)*100));}
+
+function populateMarkerSelect(){
+  const sel=document.getElementById('bio-marker-sel');if(!sel)return;
+  sel.innerHTML=MARKERS.map(m=>`<option value="${m.id}">${m.name} (${m.unit})</option>`).join('');
+}
+
+function addReading(){
+  const id=document.getElementById('bio-marker-sel')?.value;
+  const val=parseFloat(document.getElementById('bio-val-inp')?.value);
+  const date=document.getElementById('bio-date-inp')?.value;
+  const msg=document.getElementById('bio-msg');
+  if(!id||isNaN(val)||!date){if(msg)msg.textContent='Select a marker, enter a value, and pick a date.';return;}
+  const data=loadP2();
+  if(!data.bio)data.bio={};
+  if(!data.bio[id])data.bio[id]=[];
+  data.bio[id].unshift({date,value:val});
+  data.bio[id]=data.bio[id].slice(0,12); // keep last 12
+  saveP2(data);
+  if(msg){msg.textContent='Reading saved.';setTimeout(()=>{if(msg)msg.textContent='';},2000);}
+  document.getElementById('bio-val-inp').value='';
+  renderBioGrid();
+  renderSynthesis();
+}
+
+function clearBio(){
+  if(!confirm('Clear all biomarker readings?'))return;
+  const data=loadP2();data.bio={};saveP2(data);renderBioGrid();renderSynthesis();
+}
+
+function renderBioGrid(){
+  const grid=document.getElementById('bio-grid');if(!grid)return;
+  const data=loadP2();const bio=data.bio||{};
+  grid.innerHTML=MARKERS.map(m=>{
+    const readings=bio[m.id]||[];
+    const latest=readings[0];
+    if(!latest)return`<div class="bio-empty"><div class="bio-empty-n">${m.name}</div><div class="bio-empty-h">${m.unit} — no reading yet</div></div>`;
+    const st=getStatus(m.id,latest.value);
+    const pos=getRangePos(latest.value,m.min,m.max);
+    const interp=st?m.interp[st.label]:'';
+    const trend=readings.length>1?readings.slice(0,3).map(r=>`${r.value}`).join(' → '):'';
+    return`<div class="bio-card">
+      <div class="bio-card-hd">
+        <div class="bio-name-lbl">${m.name}</div>
+        ${st?`<div class="bio-dot" style="background:${st.col}" title="${st.label}"></div>`:''}
+      </div>
+      <div class="bio-val" style="color:${st?st.col:'var(--text)'}">${latest.value}</div>
+      <div class="bio-unit-lbl">${m.unit}</div>
+      <div class="bio-date-lbl">${latest.date}${trend?` · Trend: ${trend}`:''}</div>
+      <div class="bio-range-wrap">
+        <div class="bio-range-bg" style="background:linear-gradient(90deg,${m.zones.map(z=>z.col+' ').join(',')})"></div>
+        <div class="bio-range-mk" style="left:${pos}%;background:${st?st.col:'#fff'}"></div>
+      </div>
+      <div class="bio-range-lbs"><span>${m.min}</span><span style="color:${st?st.col:'var(--water)'};font-weight:700">${st?st.label:''}</span><span>${m.max}</span></div>
+      <div class="bio-interp">${interp||m.context}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── SYNTHESIS ────────────────────────────────────────────────────────────────
+const SYNTH={
+  V_O:'You process the world in spatial maps — and Type O biology thrives under physical challenge. Your best visual study sessions follow intense movement: a 20-minute run before your most demanding mind-mapping session activates the cortisol response that sharpens spatial processing. Sketch first. Move after. Short blocks, strong diagrams, physical reset between sessions. The Seer with Hunter biology does not sit still to see clearly.',
+  V_A:'The Seer mapped to Cultivator biology. Your visual processing is detailed and methodical — Type A cortisol dynamics mean this patience is an asset and a risk simultaneously. Build beautiful, structured diagrams in calm environments. Colour-code everything. But watch for cognitive stress accumulation — Type A cortisol clears slowly. Schedule deliberate decompression within your visual study architecture.',
+  V_B:'The Seer mapped to Nomad biology. Your visual mind benefits from environmental variety. Sketch in different locations, use different colour systems for different subjects. Type B stagnation risk means your visual protocols need rotation. Same diagram format, same desk, same tools: diminishing returns. Vary the vessel. Keep the visual method.',
+  V_AB:'The Seer mapped to Enigma biology. You are adaptable in style but anchored in visual processing. Type AB benefits from small, focused sessions. Build your visual maps in 45-minute blocks, rest deliberately, return refreshed. Multi-modal sessions suit you — visual primary, auditory as complement.',
+  A_O:'The Listener mapped to Hunter biology. Sound activates your processing. Type O physiology activates under intensity. Try this: listen to learning material (podcasts, lectures, voice memos) while walking or in light movement. Auditory plus movement is your highest-performance state. Intense physical priming before verbal processing sessions compounds retention significantly.',
+  A_A:'The Listener mapped to Cultivator biology. You absorb through sound and Type A biology builds detail slowly and retains it long. Discussion-based learning suits you deeply — study groups, verbal processing, talking through problems. Type A cortisol accumulation risk means your listening sessions need structured endpoints. 90 minutes maximum before deliberate rest.',
+  A_B:'The Listener mapped to Nomad biology. Variety of sound environments suits you — podcasts, lectures, discussions, voice notes in different locations. Type B adaptability means you absorb across formats better than most auditory learners. The risk is lack of structure. Set a deliberate listening plan before each session with a clear endpoint.',
+  A_AB:'The Listener mapped to Enigma biology. Spoken learning is your primary mode. Rotate between absorbing audio and creating your own voice memos of what you have learned. The act of explaining aloud what you have heard consolidates Type AB\'s multi-modal processing capacity.',
+  R_O:'The Scribe mapped to Hunter biology. You think in written language and Type O thinks in direct action. A productive tension. Your written protocols are most effective when preceded by physical activity — the cortisol prime opens cognitive bandwidth. Write before you exhaust yourself physically. Read and annotate in the post-exercise window before energy drops.',
+  R_A:'The Scribe mapped to Cultivator biology. One of the most naturally aligned combinations. Type A methodical patience plus Scribe deep reading equals sustained knowledge construction over time. Your risk is over-reading without testing — write what you have read immediately, in your own words, to consolidate. Systematic and thorough. Trust the process.',
+  R_B:'The Scribe mapped to Nomad biology. Reading and writing is your anchor — use it across varied environments to counter Type B stagnation. Same method (read, annotate, rewrite in your own words), different location. Coffee shop one session, desk the next, library after that. The Scribe\'s depth needs the Nomad\'s movement to stay productive.',
+  R_AB:'The Scribe mapped to Enigma biology. Written language is your processing tool and Type AB benefits from small, deep sessions. 45-minute focused reading blocks, immediate written summary, deliberate break. Your retention is strongest when you write immediately after absorbing. Do not let reading and writing sessions get separated.',
+  K_O:'The Doer mapped to Hunter biology. Perhaps the most kinetically powerful combination in this framework. You learn through action and Type O biology is built for physical intensity. Your learning protocol is direct: do the thing. Project-based, practical, hands-on at every stage. High-intensity movement before complex practical sessions. Build as you learn. Move as you think.',
+  K_A:'The Doer mapped to Cultivator biology. You need to do it — but Type A biology needs recovery time that pure kinesthetic learners often skip. Your risk is physical and cognitive depletion. Build, practise, experiment — but schedule deliberate rest. Type A cortisol accumulates from sustained action without recovery. The Doer who recovers well outperforms the one who never stops.',
+  K_B:'The Doer mapped to Nomad biology. Hands-on learning across varied contexts is your natural operating mode. Type B adaptability means you can apply practical skills across different environments better than most kinesthetic learners. Rotate your projects, your tools, your locations. Each new context adds a layer to your practical mastery.',
+  K_AB:'The Doer mapped to Enigma biology. Practical, hands-on learning in structured blocks. Type AB benefits from deliberate pacing — not marathon sessions, but focused practical work with clear endpoints. Build. Rest. Reflect briefly in writing. Return. The Enigma-Doer who builds in reflection compounds practical gains faster than the one who acts continuously.',
+};
+
+function renderSynthesis(){
+  const out=document.getElementById('synthesis-out');if(!out)return;
+  const savedScores=localStorage.getItem('wc_scores');
+  const p2=loadP2();
+  const varkType=savedScores?Object.entries(JSON.parse(savedScores)).sort((a,b)=>b[1]-a[1])[0][0]:null;
+  const bloodType=p2.bloodType||null;
+  const rh=p2.rh||null;
+  const bio=p2.bio||{};
+
+  if(!varkType&&!bloodType){
+    out.innerHTML=`<div class="syn-locked"><div class="syn-locked-i">◎</div><div class="syn-locked-t">Complete The Thinkier to discover your cognitive type.</div><div class="syn-locked-s">Then select your blood type above to generate your compound protocol.</div></div>`;
+    return;
+  }
+  if(!varkType){
+    out.innerHTML=`<div class="syn-locked"><div class="syn-locked-i">◎</div><div class="syn-locked-t">Blood type set. Complete The Thinkier to unlock your compound protocol.</div><div class="syn-locked-s"><a href="#thinkier" style="color:var(--water)">Take the Thinkier →</a></div></div>`;
+    return;
+  }
+  if(!bloodType){
+    out.innerHTML=`<div class="syn-locked"><div class="syn-locked-i">◎</div><div class="syn-locked-t">Cognitive type identified. Select your blood type above to complete the synthesis.</div><div class="syn-locked-s"><a href="#phase2" style="color:var(--water)">Select blood type →</a></div></div>`;
+    return;
+  }
+
+  const vark=RESULTS[varkType];const bt=BT[bloodType];
+  const key=`${varkType}_${bloodType}`;
+  const protocol=SYNTH[key]||`Apply your ${vark.name} learning protocol alongside the ${bt.name} biological framework.`;
+
+  // Biomarker flags
+  const flags=[];
+  MARKERS.forEach(m=>{
+    const readings=bio[m.id]||[];if(!readings.length)return;
+    const st=getStatus(m.id,readings[0].value);
+    if(st&&st.label!=='Normal'&&st.label!=='Optimal'&&st.label!=='Desirable'&&st.label!=='Adequate'&&st.label!=='Good')
+      flags.push({name:m.name,label:st.label,col:st.col,value:readings[0].value,unit:m.unit});
+  });
+
+  out.innerHTML=`<div class="syn-card">
+    <div class="syn-badges">
+      <span class="syn-badge" style="color:${vark.col};border-color:${vark.col}40;background:${vark.col}0d">${vark.name} — ${vark.arch}</span>
+      <span class="syn-badge" style="color:${bt.col};border-color:${bt.col}40;background:${bt.col}0d">Type ${bloodType}${rh||''} — ${bt.arch}</span>
+    </div>
+    <div class="syn-h">${vark.arch} + ${bt.arch}</div>
+    <div class="syn-sub">The compound of how you learn and how your biology operates.</div>
+    <div class="syn-body">${protocol}</div>
+    ${flags.length?`<div class="syn-bio-section">
+      <div class="syn-bio-ttl">Active biomarker flags</div>
+      <div class="syn-bio-chips">${flags.map(f=>`<span class="syn-bio-chip" style="color:${f.col};border-color:${f.col}40;background:${f.col}0d">${f.name}: ${f.value} ${f.unit} — ${f.label}</span>`).join('')}</div>
+    </div>`:''}
+  </div>`;
+}
+
+// ── PHASE 2 INIT ─────────────────────────────────────────────────────────────
+(function initP2(){
+  const data=loadP2();
+  // Restore blood type
+  if(data.bloodType){
+    document.querySelectorAll('.bt-btn').forEach(b=>b.classList.toggle('sel',b.dataset.bt===data.bloodType));
+    renderBTProfile(data.bloodType);
+  }
+  if(data.rh){
+    document.querySelectorAll('.rh-btn').forEach(b=>b.classList.toggle('sel',b.dataset.rh===data.rh));
+  }
+  populateMarkerSelect();
+  // Set date to today
+  const di=document.getElementById('bio-date-inp');
+  if(di)di.value=new Date().toISOString().slice(0,10);
+  renderBioGrid();
+  renderSynthesis();
 })();
 
 // ── FORM TABS ─────────────────────────────────────────────────────────────────
@@ -843,6 +1234,7 @@ function finishQuiz(){
   buildResults();
   localStorage.setItem('wc_scores',JSON.stringify(scores));
   localStorage.setItem('wc_done','1');
+  renderSynthesis(); // update Phase 3 now that VARK type is known
 }
 
 function buildResults(){
