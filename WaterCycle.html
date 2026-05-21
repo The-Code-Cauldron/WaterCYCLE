@@ -41,11 +41,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,8,20,0.92)
 .nav-lk:hover{color:var(--water);}
 .sp{flex:1;}
 .nav-cta{background:linear-gradient(135deg,var(--water3),var(--deep));color:var(--white);font-size:0.75rem;font-weight:700;padding:8px 18px;border-radius:50px;text-decoration:none;letter-spacing:0.5px;white-space:nowrap;}
-.nav-sponsor{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:4px;text-decoration:none;transition:border-color .15s;white-space:nowrap;}
-.nav-sponsor-gh{color:var(--water);border:1px solid rgba(34,211,238,0.3);}
-.nav-sponsor-gh:hover{border-color:var(--water);}
-.nav-sponsor-pt{color:#ff6400;border:1px solid rgba(255,100,0,0.3);}
-.nav-sponsor-pt:hover{border-color:#ff6400;}
+.nav-sponsor,.ft-sponsor{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:4px;text-decoration:none;transition:border-color .15s;white-space:nowrap;}
+.nav-sponsor-gh,.ft-sponsor-gh{color:var(--water);border:1px solid rgba(34,211,238,0.3);}
+.nav-sponsor-gh:hover,.ft-sponsor-gh:hover{border-color:var(--water);}
+.nav-sponsor-pt,.ft-sponsor-pt{color:#ff6400;border:1px solid rgba(255,100,0,0.3);}
+.nav-sponsor-pt:hover,.ft-sponsor-pt:hover{border-color:#ff6400;}
 .nav-cta:hover{opacity:0.85;}
 
 /* ── SECTIONS ── */
@@ -893,8 +893,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
   <div class="footer-logo">WaterCycle</div>
   <div class="footer-note">A self-knowledge tool. Not a clinical assessment. Not medical advice.<br>Know yourself better. Work with what you are. Stop fighting your form.</div>
   <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
-    <a href="https://github.com/sponsors/The-Architect-Neo" target="_blank" rel="noopener noreferrer" class="nav-sponsor nav-sponsor-gh">♥ Sponsor</a>
-    <a href="https://patreon.com/TheArchitectNeo" target="_blank" rel="noopener noreferrer" class="nav-sponsor nav-sponsor-pt">Patreon</a>
+    <a href="https://github.com/sponsors/The-Architect-Neo" target="_blank" rel="noopener noreferrer" class="ft-sponsor ft-sponsor-gh">♥ Sponsor</a>
+    <a href="https://patreon.com/TheArchitectNeo" target="_blank" rel="noopener noreferrer" class="ft-sponsor ft-sponsor-pt">Patreon</a>
   </div>
 </footer>
 
