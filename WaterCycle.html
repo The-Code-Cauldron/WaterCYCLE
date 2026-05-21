@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -134,6 +134,7 @@ section{padding:90px 24px;position:relative;z-index:1;}
 .opt-text{font-size:0.87rem;color:var(--sub);line-height:1.5;display:inline;vertical-align:middle;}
 .quiz-opt.selected .opt-text{color:var(--text);}
 
+.quiz-multi-hint{font-size:0.65rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--water);opacity:0.55;margin-bottom:20px;}
 .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
 .q-num{font-size:0.72rem;color:var(--muted);letter-spacing:1px;}
 
@@ -662,6 +663,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
         <div class="quiz-step" id="qstep">Question 1 of 12</div>
         <div class="quiz-card">
           <div class="quiz-question" id="qquestion"></div>
+          <div class="quiz-multi-hint">Select everything that feels true — more than one can apply</div>
           <div class="quiz-options" id="qopts"></div>
         </div>
         <div class="quiz-nav">
@@ -1207,7 +1209,7 @@ const QS = [
   { q:"You need to remember something important. How do you store it?",
     o:[{t:"You create a mental image or visual association.",s:'V'},{t:"You say it out loud or make a rhyme or rhythm.",s:'A'},{t:"You write it down — even if you never look at the note.",s:'R'},{t:"You connect it to something you did or a physical sensation.",s:'K'}]},
   { q:"You're in a meeting. What do you naturally do?",
-    o:[{t:"Sketch diagrams or draw the ideas being discussed — your hands need to map what your ears are hearing.",s:['V','K']},{t:"Just listen — you are fully absorbing what is being said.",s:['A']},{t:"Write detailed notes and read them back to process.",s:['R']},{t:"Find it hard to sit still — you process by moving later.",s:['K']}]},
+    o:[{t:"Sketch diagrams or draw the ideas being discussed — your hands need to map what your ears are hearing.",s:['V','K']},{t:"Just listen — you are fully absorbing what is being said.",s:['A']},{t:"Write detailed notes and read them back to process.",s:['R']},{t:"Get restless when it's all talk — you want to do, try, or build something, not just discuss it.",s:['K']}]},
   { q:"You are assembling flat-pack furniture. You:",
     o:[{t:"Use only the visual diagram and ignore the written steps.",s:'V'},{t:"Wish there was a video with someone talking through it.",s:'A'},{t:"Read every step carefully before touching anything.",s:'R'},{t:"Put the instructions aside and work it out by doing.",s:'K'}]},
   { q:"When explaining something complicated to someone else, you tend to:",
@@ -1278,7 +1280,7 @@ function renderQ(){
   const letters=['A','B','C','D'];
   document.getElementById('qopts').innerHTML=q.o.map((o,i)=>{
     const sd=JSON.stringify(Array.isArray(o.s)?o.s:[o.s]);
-    return `<div class="quiz-opt" data-style='${sd}' onclick="selectOpt(this)" tabindex="0" role="radio" aria-checked="false" onkeydown="if(event.key==='Enter'||event.key===' ')selectOpt(this)">
+    return `<div class="quiz-opt" data-style='${sd}' onclick="selectOpt(this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key==='Enter'||event.key===' ')selectOpt(this)">
       <span class="opt-letter">${letters[i]}</span>
       <span class="opt-text">${o.t}</span>
     </div>`;
@@ -1288,18 +1290,19 @@ function renderQ(){
 }
 
 function selectOpt(el){
-  document.querySelectorAll('.quiz-opt').forEach(o=>{o.classList.remove('selected');o.setAttribute('aria-checked','false');});
-  el.classList.add('selected');
-  el.setAttribute('aria-checked','true');
-  selectedThisQ=JSON.parse(el.dataset.style);
-  document.getElementById('qnext').style.display='inline-block';
-  setTimeout(()=>{ if(selectedThisQ) nextQ(); }, 600);
+  el.classList.toggle('selected');
+  el.setAttribute('aria-checked', el.classList.contains('selected') ? 'true' : 'false');
+  const anySelected = document.querySelectorAll('.quiz-opt.selected').length > 0;
+  document.getElementById('qnext').style.display = anySelected ? 'inline-block' : 'none';
 }
 
 function nextQ(){
-  if(!selectedThisQ) return;
-  selectedThisQ.forEach(s=>scores[s]++);
-  answers.push(selectedThisQ);
+  const selected=document.querySelectorAll('.quiz-opt.selected');
+  if(!selected.length) return;
+  const allStyles=[];
+  selected.forEach(opt=>JSON.parse(opt.dataset.style).forEach(s=>allStyles.push(s)));
+  allStyles.forEach(s=>scores[s]++);
+  answers.push(allStyles);
   current++;
   if(current>=QS.length){ finishQuiz(); return; }
   renderQ();
