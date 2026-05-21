@@ -41,11 +41,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,8,20,0.92)
 .nav-lk:hover{color:var(--water);}
 .sp{flex:1;}
 .nav-cta{background:linear-gradient(135deg,var(--water3),var(--deep));color:var(--white);font-size:0.75rem;font-weight:700;padding:8px 18px;border-radius:50px;text-decoration:none;letter-spacing:0.5px;white-space:nowrap;}
-.nav-sponsor,.ft-sponsor{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:4px;text-decoration:none;transition:border-color .15s;white-space:nowrap;}
-.nav-sponsor-gh,.ft-sponsor-gh{color:var(--water);border:1px solid rgba(34,211,238,0.3);}
-.nav-sponsor-gh:hover,.ft-sponsor-gh:hover{border-color:var(--water);}
-.nav-sponsor-pt,.ft-sponsor-pt{color:#ff6400;border:1px solid rgba(255,100,0,0.3);}
-.nav-sponsor-pt:hover,.ft-sponsor-pt:hover{border-color:#ff6400;}
+.ft-sponsor{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:4px;text-decoration:none;transition:border-color .15s;white-space:nowrap;}
+.ft-sponsor-gh{color:var(--water);border:1px solid rgba(34,211,238,0.3);}
+.ft-sponsor-gh:hover{border-color:var(--water);}
+.ft-sponsor-pt{color:#ff6400;border:1px solid rgba(255,100,0,0.3);}
+.ft-sponsor-pt:hover{border-color:#ff6400;}
+.sponsor-bar{position:fixed;top:58px;left:0;right:0;z-index:99;background:rgba(2,8,20,0.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:12px;height:32px;padding:0 24px;}
+.sb-label{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.sb-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:3px;text-decoration:none;transition:border-color .15s,background .15s;white-space:nowrap;}
+.sb-btn-gh{color:var(--water);border:1px solid rgba(34,211,238,0.3);}
+.sb-btn-gh:hover{border-color:var(--water);background:rgba(34,211,238,0.05);}
+.sb-btn-pt{color:#ff6400;border:1px solid rgba(255,100,0,0.3);}
+.sb-btn-pt:hover{border-color:#ff6400;background:rgba(255,100,0,0.05);}
+@media(max-width:600px){.sponsor-bar{top:54px;}.sb-label{display:none;}}
 .nav-cta:hover{opacity:0.85;}
 
 /* ── SECTIONS ── */
@@ -311,13 +319,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
   nav{padding:0 16px;}
   .nav-inner{gap:12px;height:54px;}
   .nav-lk{display:none;}
-  .nav-sponsor{display:none;}
   .sp{flex:1;}
   .nav-cta{font-size:0.7rem;padding:7px 14px;}
 
   /* Sections */
   section{padding:52px 16px!important;}
-  .hero{padding:88px 16px 52px!important;min-height:auto;}
+  .hero{padding:104px 16px 52px!important;min-height:auto;}
   .hero h1{font-size:clamp(2.2rem,9vw,3.5rem);}
   .hero-sub{font-size:0.97rem;}
   .hero-quote{font-size:0.85rem;margin-top:36px;}
@@ -395,11 +402,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
     <a href="#synthesis" class="nav-lk">Your Profile</a>
     <a href="#cocoon" class="nav-lk">The Cocoon</a>
     <div class="sp"></div>
-    <a href="https://github.com/sponsors/The-Architect-Neo" target="_blank" rel="noopener noreferrer" class="nav-sponsor nav-sponsor-gh">♥ Sponsor</a>
-    <a href="https://patreon.com/TheArchitectNeo" target="_blank" rel="noopener noreferrer" class="nav-sponsor nav-sponsor-pt">Patreon</a>
     <a href="#thinkier" class="nav-cta">Find Your Form →</a>
   </div>
 </nav>
+
+<div class="sponsor-bar">
+  <span class="sb-label">Support this project</span>
+  <a href="https://github.com/sponsors/The-Architect-Neo" target="_blank" rel="noopener noreferrer" class="sb-btn sb-btn-gh">♥ Sponsor</a>
+  <a href="https://patreon.com/TheArchitectNeo" target="_blank" rel="noopener noreferrer" class="sb-btn sb-btn-pt">Patreon</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
