@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'WaterCycle.html'));
+  res.sendFile(path.join(__dirname, 'WaterCycleV2.html'));
 });
 
 const PORT = process.env.PORT || 3535;
