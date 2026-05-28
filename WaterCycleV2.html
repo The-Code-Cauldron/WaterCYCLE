@@ -130,6 +130,15 @@ html.theme-light .pc-title{color:var(--text);}
 .pc-items li:last-child{border-bottom:none;}
 .pc-items li::before{content:'→ ';color:var(--water);font-weight:700;}
 .retake{text-align:center;margin-top:48px;}
+.qinstr{font-size:0.78rem;color:var(--muted);margin-bottom:20px;font-style:italic;text-align:center;line-height:1.5;}
+.qhint{display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:50px;border:1px solid;margin-left:8px;vertical-align:middle;opacity:0;transition:opacity .3s;pointer-events:none;}
+.qopts.revealed .qhint{opacity:1;}
+.ans-review{max-width:700px;margin:48px auto 0;}
+.ans-review-ttl{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.ans-row{background:var(--bg3);border:1px solid var(--border);padding:14px 18px;margin-bottom:3px;border-radius:3px;}
+.ans-q{font-size:0.77rem;color:var(--sub);margin-bottom:8px;line-height:1.5;}
+.ans-picks{display:flex;gap:6px;flex-wrap:wrap;}
+.ans-pick{font-size:0.69rem;font-weight:600;padding:3px 10px;border-radius:50px;border:1px solid;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .phase2-sec{background:var(--bg2);border-top:1px solid var(--border);}
 .bt-sel{display:flex;gap:10px;margin:28px 0 16px;flex-wrap:wrap;}
 .btbtn{flex:1;min-width:100px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:20px 12px;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit;}
@@ -443,14 +452,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 <section id="thinkier">
   <div class="container">
     <div class="eyebrow">The Thinkier</div>
-    <h2 class="section-title">Sixteen moments. Your pattern revealed.</h2>
-    <p class="section-sub">Not a personality test. Sixteen real scenarios. Pick what feels closest to natural — not what you think the right answer is.</p>
+    <h2 class="section-title">Sixteen moments. All that apply.</h2>
+    <p class="section-sub">Not a personality test. Sixteen real scenarios. Select every response that feels natural — most people are a blend. One style rarely owns you completely. The more honest your selections, the sharper your map.</p>
     <div class="qwrap" id="quiz-wrap">
       <div class="qprog"><div class="qpfill" id="qpf" style="width:0%"></div></div>
       <div class="qstep" id="qstep">Scenario 1 of 6</div>
       <div class="qcard">
         <div class="qscene" id="q-scene"></div>
         <div class="qctx" id="q-ctx"></div>
+        <div class="qinstr">Select every response that feels natural. Most people pick more than one.</div>
         <div class="qopts" id="q-opts"></div>
         <div class="qnav"><span class="qnum" id="q-num"></span><button class="btn-water" id="q-next" style="display:none;padding:12px 28px;font-size:0.85rem;" onclick="nextQ()">Next</button></div>
       </div>
@@ -472,6 +482,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <div class="eyebrow" id="proto-title"></div>
       <div class="proto-grid" id="proto-grid"></div>
     </div>
+    <div id="ans-review-wrap"></div>
     <div class="retake"><button class="btn-ghost" onclick="retakeQuiz()">Retake the Thinkier</button></div>
   </div>
 </section>
@@ -668,6 +679,9 @@ var SYNTH={
   K_B:'The Doer mapped to Nomad biology. Hands-on learning across varied contexts is your natural operating mode. Type B adaptability means you can apply practical skills across different environments better than most kinesthetic learners. Rotate your projects, your tools, your locations. Each new context adds a layer to your practical mastery.',
   K_AB:'The Doer mapped to Enigma biology. Practical, hands-on learning in structured blocks. Type AB benefits from deliberate pacing — not marathon sessions, but focused practical work with clear endpoints. Build. Rest. Reflect briefly in writing. Return. The Enigma-Doer who builds in reflection compounds practical gains faster than the one who acts continuously.'
 };
+var SNAMES={V:'Visual',A:'Auditory',R:'Reading',K:'Kinesthetic'};
+var SCOLS={V:'var(--vis)',A:'var(--aud)',R:'var(--rw)',K:'var(--kin)'};
+function getDomStyle(w){var o=['V','A','R','K'],mx=Math.max(w.V,w.A,w.R,w.K);for(var i=0;i<o.length;i++){if(w[o[i]]===mx)return o[i];}return 'V';}
 var TECHNIQUES=[
   {id:'box',name:'Box Breathing',pattern:'4 · 4 · 4 · 4',desc:'Navy SEAL regulation protocol. Equal phases. Resets the nervous system in under two minutes.',phases:[{lbl:'Inhale',dur:4,sc:1.55},{lbl:'Hold',dur:4,sc:1.55},{lbl:'Exhale',dur:4,sc:1.0},{lbl:'Hold',dur:4,sc:1.0}]},
   {id:'478',name:'4–7–8',pattern:'4 · 7 · 8',desc:"Andrew Weil's method. Deep parasympathetic activation. Use before sleep or when cortisol is elevated.",phases:[{lbl:'Inhale',dur:4,sc:1.55},{lbl:'Hold',dur:7,sc:1.55},{lbl:'Exhale',dur:8,sc:1.0}]},
@@ -734,24 +748,36 @@ function renderQ(){
   document.getElementById('qstep').textContent='Scenario '+(S.qidx+1)+' of '+SCENARIOS.length;
   document.getElementById('q-scene').textContent=q.scenario;
   document.getElementById('q-ctx').textContent=q.ctx;
-  var sel=S.qans[S.qidx];
+  var sels=S.qans[S.qidx]||[];
   var html='';
   q.opts.forEach(function(o){
-    html+='<button class="qopt'+(sel===o.k?' sel':'')+'" onclick="pickOpt(\''+o.k+'\')" data-k="'+o.k+'">';
-    html+='<span class="oletter">'+o.k+'</span><span class="otext">'+o.t+'</span></button>';
+    var isSel=sels.indexOf(o.k)>=0;
+    var dom=getDomStyle(o.w);
+    var hc=SCOLS[dom];
+    html+='<button class="qopt'+(isSel?' sel':'')+'" onclick="pickOpt(\''+o.k+'\')" data-k="'+o.k+'">';
+    html+='<span class="oletter">'+o.k+'</span>';
+    html+='<span class="otext">'+o.t;
+    html+='<span class="qhint" style="color:'+hc+';border-color:'+hc+'">'+SNAMES[dom]+'</span>';
+    html+='</span></button>';
   });
-  document.getElementById('q-opts').innerHTML=html;
+  var optsEl=document.getElementById('q-opts');
+  optsEl.innerHTML=html;
+  if(sels.length>0)optsEl.classList.add('revealed');
+  else optsEl.classList.remove('revealed');
   document.getElementById('q-num').textContent=(S.qidx+1)+' / '+SCENARIOS.length;
   var nxt=document.getElementById('q-next');
-  nxt.style.display=sel?'inline-block':'none';
+  nxt.style.display=sels.length>0?'inline-block':'none';
   nxt.textContent=S.qidx===SCENARIOS.length-1?'See My Result':'Next';
 }
 
 function pickOpt(k){
   try{
-    S.qans[S.qidx]=k;
-    document.querySelectorAll('.qopt').forEach(function(el){el.classList.toggle('sel',el.dataset.k===k);});
-    document.getElementById('q-next').style.display='inline-block';
+    if(!S.qans[S.qidx])S.qans[S.qidx]=[];
+    var arr=S.qans[S.qidx];
+    var idx=arr.indexOf(k);
+    if(idx>=0)arr.splice(idx,1);
+    else arr.push(k);
+    renderQ();
   }catch(e){}
 }
 
@@ -766,9 +792,11 @@ function showResults(){
   try{
     var sc={V:0,A:0,R:0,K:0};
     SCENARIOS.forEach(function(q,i){
-      var ans=S.qans[i];if(!ans)return;
-      var opt=q.opts.find(function(o){return o.k===ans;});if(!opt)return;
-      Object.keys(opt.w).forEach(function(k){sc[k]+=opt.w[k];});
+      var sels=S.qans[i];if(!sels||!sels.length)return;
+      sels.forEach(function(ans){
+        var opt=q.opts.find(function(o){return o.k===ans;});if(!opt)return;
+        Object.keys(opt.w).forEach(function(k){sc[k]+=opt.w[k];});
+      });
     });
     var keys=Object.keys(sc);
     var sorted=keys.slice().sort(function(a,b){return sc[b]-sc[a];});
@@ -780,8 +808,9 @@ function showResults(){
     document.getElementById('res-name').style.color=R.col;
     document.getElementById('res-arch').textContent=R.arch;
     document.getElementById('res-arch').style.color=R.col;
-    var sec=sorted[1],diff=sc[dom]-sc[sec];
-    document.getElementById('res-sec').textContent=diff<=2?'Secondary form: '+RESULTS[sec].name+' ('+RESULTS[sec].arch+')':(diff<=4?'Strong lean toward '+RESULTS[sec].name+' as secondary':'');
+    var sec=sorted[1];
+    var domPct=sc[dom]/total*100,secPct=sc[sec]/total*100,pctDiff=domPct-secPct;
+    document.getElementById('res-sec').textContent=pctDiff<=8?'Secondary form: '+RESULTS[sec].name+' ('+RESULTS[sec].arch+')':(pctDiff<=16?'Strong lean toward '+RESULTS[sec].name+' as secondary':'');
     document.getElementById('res-stmt').textContent=R.statement;
     var bh='';
     sorted.forEach(function(k){
@@ -799,6 +828,22 @@ function showResults(){
       pg+='</ul></div>';
     });
     document.getElementById('proto-grid').innerHTML=pg;
+    var rev='<div class="ans-review"><div class="ans-review-ttl">How you answered</div>';
+    SCENARIOS.forEach(function(q,i){
+      var sels=S.qans[i];if(!sels||!sels.length)return;
+      rev+='<div class="ans-row"><div class="ans-q">'+q.scenario+'</div><div class="ans-picks">';
+      sels.forEach(function(ans){
+        var opt=q.opts.find(function(o){return o.k===ans;});if(!opt)return;
+        var dom=getDomStyle(opt.w);
+        var hc=SCOLS[dom];
+        var txt=opt.t.length>52?opt.t.substring(0,50)+'…':opt.t;
+        rev+='<span class="ans-pick" style="color:'+hc+';border-color:'+hc+'">'+txt+'</span>';
+      });
+      rev+='</div></div>';
+    });
+    rev+='</div>';
+    var arw=document.getElementById('ans-review-wrap');
+    if(arw)arw.innerHTML=rev;
     document.getElementById('results').style.display='block';
     document.getElementById('thinkier').style.display='none';
     setTimeout(function(){document.getElementById('results').scrollIntoView({behavior:'smooth'});},100);
@@ -811,6 +856,7 @@ function retakeQuiz(){
     S.qans={};S.qidx=0;S.vark=null;
     document.getElementById('results').style.display='none';
     document.getElementById('thinkier').style.display='';
+    var arw=document.getElementById('ans-review-wrap');if(arw)arw.innerHTML='';
     renderQ();
     document.getElementById('thinkier').scrollIntoView({behavior:'smooth'});
     renderSynth();
