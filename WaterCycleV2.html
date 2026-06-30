@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WaterCycle — Learn Without Effort</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 html.theme-dark{--bg:#020814;--bg2:#060f1f;--bg3:#0a1628;--bg4:#0d1f3c;--border:#1e3a5f;--water:#22d3ee;--water2:#0ea5e9;--water3:#1e40af;--deep:#0891b2;--text:#e2e8f0;--sub:#94a3b8;--muted:#64748b;--white:#ffffff;}
 html.theme-mid{--bg:#0f172a;--bg2:#1e293b;--bg3:#263548;--bg4:#2d3f55;--border:#334155;--water:#22d3ee;--water2:#0ea5e9;--water3:#1e40af;--deep:#0891b2;--text:#f1f5f9;--sub:#cbd5e1;--muted:#94a3b8;--white:#ffffff;}
@@ -12,13 +13,14 @@ html.theme-light{--bg:#f8fafc;--bg2:#ffffff;--bg3:#f1f5f9;--bg4:#e2e8f0;--border
 :root{--vis:#8b5cf6;--aud:#f59e0b;--rw:#10b981;--kin:#ef4444;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;transition:background .25s,color .25s;}
+body{background:var(--bg);color:var(--text);font-family:'Spectral',Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;overflow-x:hidden;transition:background .25s,color .25s;}
 #water-canvas{position:fixed;inset:0;z-index:0;opacity:0.18;pointer-events:none;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
 html.theme-dark nav,html.theme-mid nav{background:rgba(2,8,20,0.92);}
 html.theme-light nav{background:rgba(248,250,252,0.94);}
 .nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;height:58px;gap:16px;}
-.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;background:linear-gradient(135deg,var(--water),var(--water2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;flex-shrink:0;cursor:pointer;}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.25rem;color:var(--text);text-decoration:none;flex-shrink:0;cursor:pointer;letter-spacing:.01em;}
+.cyc{background:linear-gradient(135deg,var(--water),var(--water2));-webkit-background-clip:text;background-clip:text;color:var(--water);-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 7px rgba(34,211,238,.6)) drop-shadow(0 0 16px rgba(14,165,233,.4));}
 .nav-lk{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;white-space:nowrap;}
 .nav-lk:hover{color:var(--water);}
 .sp{flex:1;}
@@ -34,19 +36,19 @@ html.theme-light .tbtn:hover,html.theme-light .tbtn.on{background:rgba(8,145,178
 section{padding:90px 24px;position:relative;z-index:1;}
 .container{max-width:1100px;margin:0 auto;}
 .eyebrow{font-size:0.65rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--water);margin-bottom:14px;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.2;}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.2;}
 html.theme-light .section-title{color:var(--text);}
 .section-sub{font-size:1rem;color:var(--sub);max-width:580px;line-height:1.75;}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:130px 24px 80px;position:relative;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(34,211,238,0.07) 0%,transparent 65%);z-index:0;pointer-events:none;}
 .hero-content{position:relative;z-index:1;}
 .hero-eyebrow{font-size:0.65rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--water);margin-bottom:20px;opacity:0.8;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,6rem);font-weight:700;color:var(--white);line-height:1.05;margin-bottom:24px;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(3rem,9vw,6rem);font-weight:700;color:var(--white);line-height:1.05;margin-bottom:24px;}
 html.theme-light .hero h1{color:var(--text);}
 .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--water),var(--water2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--sub);max-width:560px;margin:0 auto 40px;line-height:1.8;}
-.hero-quote{font-family:'Playfair Display',serif;font-size:0.95rem;font-style:italic;color:var(--water);opacity:0.7;margin-top:50px;letter-spacing:0.5px;}
-.hero-quote cite{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:0.65rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-top:8px;opacity:0.6;}
+.hero-quote{font-family:'Fraunces',serif;font-size:0.95rem;font-style:italic;color:var(--water);opacity:0.7;margin-top:50px;letter-spacing:0.5px;}
+.hero-quote cite{display:block;font-family:'Spectral',serif;font-style:normal;font-size:0.65rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-top:8px;opacity:0.6;}
 .btn-water{display:inline-block;background:linear-gradient(135deg,var(--water3),var(--deep));color:#fff;font-weight:700;padding:15px 36px;border-radius:50px;text-decoration:none;font-size:0.95rem;border:none;cursor:pointer;font-family:inherit;transition:opacity .15s,transform .15s;}
 .btn-water:hover{opacity:0.88;transform:translateY(-1px);}
 .btn-ghost{display:inline-block;background:transparent;color:var(--water);font-weight:600;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:0.95rem;border:1px solid rgba(34,211,238,0.35);cursor:pointer;font-family:inherit;transition:all .15s;}
@@ -54,12 +56,12 @@ html.theme-light .hero h1{color:var(--text);}
 .philosophy{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:48px;}
 .phil-cell{background:var(--bg3);padding:32px 28px;}
-.phil-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--water);opacity:0.25;font-style:italic;margin-bottom:14px;}
+.phil-num{font-family:'Fraunces',serif;font-size:2.2rem;color:var(--water);opacity:0.25;font-style:italic;margin-bottom:14px;}
 .phil-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:10px;}
 html.theme-light .phil-title{color:var(--text);}
 .phil-text{font-size:0.87rem;color:var(--sub);line-height:1.75;}
 .forms-tabs{display:flex;border:1px solid var(--border);margin-top:48px;overflow:hidden;border-radius:4px;}
-.form-tab{flex:1;background:var(--bg3);border:none;border-right:1px solid var(--border);color:var(--sub);font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 8px;cursor:pointer;transition:background .15s,color .15s;text-align:center;}
+.form-tab{flex:1;background:var(--bg3);border:none;border-right:1px solid var(--border);color:var(--sub);font-family:'Spectral',serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 8px;cursor:pointer;transition:background .15s,color .15s;text-align:center;}
 .form-tab:last-child{border-right:none;}
 .form-tab:hover{background:var(--bg4);color:var(--text);}
 .form-tab.on{color:#fff;}
@@ -72,7 +74,7 @@ html.theme-light .phil-title{color:var(--text);}
 .form-left{padding:40px;border-right:1px solid var(--border);}
 .form-right{padding:40px;}
 .form-flabel{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
-.form-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:6px;}
+.form-name{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;margin-bottom:6px;}
 .form-arch{font-size:0.85rem;font-style:italic;margin-bottom:20px;}
 .form-desc{font-size:0.9rem;color:var(--sub);line-height:1.8;margin-bottom:24px;}
 .fblock{margin-bottom:22px;}
@@ -93,7 +95,7 @@ html.theme-light .phil-title{color:var(--text);}
 .qpfill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--water3),var(--water));transition:width .4s ease;}
 .qstep{font-size:0.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
 .qcard{background:var(--bg3);border:1px solid var(--border);padding:36px 40px;border-radius:4px;}
-.qscene{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--white);line-height:1.5;margin-bottom:8px;}
+.qscene{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--white);line-height:1.5;margin-bottom:8px;}
 html.theme-light .qscene{color:var(--text);}
 .qctx{font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:28px;font-style:italic;}
 .qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -110,8 +112,8 @@ html.theme-light .qscene{color:var(--text);}
 #results.visible{display:block;}
 .res-reveal{text-align:center;margin-bottom:60px;}
 .res-type-lbl{font-size:0.65rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--water);margin-bottom:12px;}
-.res-type-name{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;margin-bottom:8px;}
-.res-type-arch{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;margin-bottom:20px;}
+.res-type-name{font-family:'Fraunces',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;margin-bottom:8px;}
+.res-type-arch{font-family:'Fraunces',serif;font-size:1.3rem;font-style:italic;margin-bottom:20px;}
 .res-secondary{font-size:0.88rem;font-weight:600;margin-bottom:20px;color:var(--muted);}
 .res-statement{font-size:1.05rem;color:var(--sub);max-width:560px;margin:0 auto;line-height:1.8;}
 .score-bars{max-width:600px;margin:48px auto;display:flex;flex-direction:column;gap:14px;}
@@ -144,7 +146,7 @@ html.theme-light .pc-title{color:var(--text);}
 .btbtn{flex:1;min-width:100px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:20px 12px;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit;}
 .btbtn:hover{border-color:rgba(34,211,238,.4);background:var(--bg4);}
 .btbtn.sel{border-color:var(--water);background:rgba(34,211,238,.06);}
-.bt-big{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-bottom:4px;line-height:1;}
+.bt-big{font-family:'Fraunces',serif;font-size:2.2rem;color:var(--white);margin-bottom:4px;line-height:1;}
 html.theme-light .bt-big{color:var(--text);}
 .bt-lbl{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .btbtn.sel .bt-lbl{color:var(--water);}
@@ -179,7 +181,7 @@ html.theme-light .btp-h{color:var(--text);}
 .bio-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
 .bio-nlbl{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sub);}
 .bio-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:2px;}
-.bio-val{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:2px;}
+.bio-val{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:2px;}
 html.theme-light .bio-val{color:var(--text);}
 .bio-unit{font-size:0.7rem;color:var(--muted);}
 .bio-date{font-size:0.65rem;color:var(--muted);margin:6px 0 12px;}
@@ -195,7 +197,7 @@ html.theme-light .bio-val{color:var(--text);}
 .syn-card{background:var(--bg3);border:1px solid var(--border);padding:36px 40px;margin-top:32px;border-radius:4px;}
 .syn-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
 .syn-badge{padding:7px 16px;border-radius:50px;font-size:0.75rem;font-weight:700;border:1px solid;}
-.syn-h{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:8px;}
+.syn-h{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--white);margin-bottom:8px;}
 html.theme-light .syn-h{color:var(--text);}
 .syn-sub{font-size:0.82rem;color:var(--muted);margin-bottom:20px;font-style:italic;}
 .syn-body{font-size:0.92rem;color:var(--sub);line-height:1.9;}
@@ -215,10 +217,35 @@ html.theme-light .syn-h{color:var(--text);}
 @keyframes rpulse{0%,100%{transform:scale(1);opacity:0.35;}50%{transform:scale(1.06);opacity:0.75;}}
 #bcircle{width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,0.05) 0%,transparent 70%);border:1.5px solid rgba(34,211,238,0.22);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;will-change:transform;}
 .bph-lbl{font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--water);opacity:0.8;text-align:center;padding:0 8px;}
-.bph-count{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--white);line-height:1;min-height:38px;text-align:center;}
+.bph-count{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--white);line-height:1;min-height:38px;text-align:center;}
 html.theme-light .bph-count{color:var(--text);}
 .breath-rounds{font-size:0.72rem;color:var(--muted);letter-spacing:1px;min-height:20px;text-align:center;}
 .breath-ctrls{display:flex;gap:10px;justify-content:center;}
+.breath-opts{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.blen{display:inline-flex;gap:4px;border:1px solid var(--border);border-radius:6px;padding:3px;}
+.blen-b{font-family:inherit;font-size:0.78rem;font-weight:700;letter-spacing:1px;color:var(--muted);background:transparent;border:none;border-radius:4px;padding:7px 13px;cursor:pointer;}
+.blen-b.on{background:rgba(34,211,238,0.12);color:var(--water);}
+.btn-cues{padding:8px 16px;font-size:0.78rem;}
+.btn-cues.on{border-color:var(--water);color:var(--water);}
+.breath-log{font-size:0.82rem;color:var(--sub);letter-spacing:0.5px;min-height:18px;text-align:center;}
+.reco{background:rgba(34,211,238,0.05);border:1px solid var(--water);border-radius:6px;padding:18px 20px;margin-bottom:22px;}
+.reco-ey{font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--water);margin-bottom:8px;}
+.reco-name{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:7px;}
+html.theme-light .reco-name{color:var(--text);}
+.reco-why{font-size:0.85rem;color:var(--sub);line-height:1.65;margin-bottom:15px;}
+.reco-locked{font-size:0.85rem;color:var(--muted);line-height:1.65;margin-bottom:22px;}
+.syn-link{display:inline-block;margin-top:20px;font-size:0.85rem;font-weight:600;color:var(--water);text-decoration:none;border-bottom:1px solid rgba(34,211,238,.4);padding-bottom:2px;}
+.syn-link:hover{border-bottom-color:var(--water);}
+.wc-acc{border:1px solid var(--border);border-radius:6px;margin-top:24px;background:var(--bg3);overflow:hidden;}
+.wc-acc>summary{cursor:pointer;padding:20px 26px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.wc-acc>summary::-webkit-details-marker{display:none;}
+.wc-acc>summary::after{content:'+';color:var(--water);font-family:'Spectral',serif;font-size:1.6rem;font-weight:600;line-height:1;flex-shrink:0;}
+.wc-acc[open]>summary::after{content:'\2013';}
+.wc-acc>summary:focus-visible{outline:2px solid var(--water);outline-offset:2px;}
+.wc-acc-t{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--white);line-height:1.3;}
+html.theme-light .wc-acc-t{color:var(--text);}
+.wc-acc-sub{display:block;font-family:'Spectral',serif;font-size:0.85rem;font-weight:400;color:var(--sub);margin-top:5px;}
+.wc-acc-body{padding:0 26px 26px;}
 .tech-list{display:flex;flex-direction:column;gap:6px;}
 .tcard{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:14px 18px;cursor:pointer;transition:border-color .12s,background .12s;text-align:left;width:100%;font-family:inherit;}
 .tcard:hover{border-color:rgba(34,211,238,0.3);background:var(--bg4);}
@@ -228,19 +255,19 @@ html.theme-light .tc-name{color:var(--text);}
 .tc-pat{font-size:0.65rem;font-weight:700;letter-spacing:2px;color:var(--water);margin-bottom:5px;}
 .tc-desc{font-size:0.77rem;color:var(--sub);line-height:1.55;}
 .cocoon-phil{margin-top:52px;border-top:1px solid var(--border);padding-top:40px;}
-.god-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:8px;}
+.god-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:8px;}
 html.theme-light .god-title{color:var(--text);}
 .god-sub{font-size:0.9rem;color:var(--sub);line-height:1.75;max-width:600px;margin-bottom:32px;}
 .cpgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
 .cpc{background:var(--bg2);padding:28px 24px;}
-.cpc-word{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;color:var(--water);margin-bottom:4px;}
+.cpc-word{font-family:'Fraunces',serif;font-size:1.6rem;font-style:italic;color:var(--water);margin-bottom:4px;}
 .cpc-origin{font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .cpc-text{font-size:0.82rem;color:var(--sub);line-height:1.75;}
 .csci{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--water);padding:28px 32px;margin-top:2px;}
 .csci-title{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--water);margin-bottom:12px;}
 .csci-text{font-size:0.85rem;color:var(--sub);line-height:1.8;}
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24px;text-align:center;position:relative;z-index:1;}
-.ft-logo{font-family:'Playfair Display',serif;font-size:1.1rem;background:linear-gradient(135deg,var(--water),var(--water2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.ft-logo{font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:600;color:var(--text);margin-bottom:16px;}
 .ft-sp{display:flex;gap:10px;justify-content:center;margin-bottom:20px;}
 .ft-note{font-size:0.72rem;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.7;}
 @media(max-width:800px){
@@ -294,6 +321,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
   .bph-count{font-size:1.6rem;}
   .cpgrid{grid-template-columns:1fr;}
   .phil-cell,.cpc{padding:22px 18px;}
+  .wc-acc>summary{padding:16px 18px;}
+  .wc-acc-body{padding:0 18px 18px;}
+  .wc-acc-t{font-size:1.05rem;}
 }
 </style>
 </head>
@@ -302,7 +332,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <nav>
   <div class="nav-inner">
-    <span class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">WaterCycle</span>
+    <span class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Water<span class="cyc">Cycle</span></span>
     <a href="#forms" class="nav-lk">The Forms</a>
     <a href="#thinkier" class="nav-lk">The Thinkier</a>
     <a href="#phase2" class="nav-lk">Blood Type</a>
@@ -451,12 +481,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <section id="thinkier">
   <div class="container">
-    <div class="eyebrow">The Thinkier</div>
+    <div class="eyebrow">Phase One · The Thinkier</div>
     <h2 class="section-title">Sixteen moments. All that apply.</h2>
     <p class="section-sub">Not a personality test. Sixteen real scenarios. Select every response that feels natural — most people are a blend. One style rarely owns you completely. The more honest your selections, the sharper your map.</p>
     <div class="qwrap" id="quiz-wrap">
       <div class="qprog"><div class="qpfill" id="qpf" style="width:0%"></div></div>
-      <div class="qstep" id="qstep">Scenario 1 of 6</div>
+      <div class="qstep" id="qstep">Scenario 1 of 16</div>
       <div class="qcard">
         <div class="qscene" id="q-scene"></div>
         <div class="qctx" id="q-ctx"></div>
@@ -489,7 +519,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <section id="phase2" class="phase2-sec">
   <div class="container">
-    <div class="eyebrow">Phase 2</div>
+    <div class="eyebrow">Phase Two · Blood Type</div>
     <h2 class="section-title">Blood Type</h2>
     <p class="section-sub">Biology intersects with cognition. Select your blood type and Rh factor to generate your biological learning profile.</p>
     <div class="evid"><strong>Evidence note</strong>The blood type diet (Peter D'Adamo) is not peer-reviewed as clinical science. The profiles below draw on known biology where evidence exists and clearly label speculation.</div>
@@ -514,7 +544,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <section id="biomarkers" class="bio-sec">
   <div class="container">
-    <div class="eyebrow">Phase 2 — Biomarkers</div>
+    <div class="eyebrow">Phase Two · Biomarkers</div>
     <h2 class="section-title">Track your markers.</h2>
     <p class="section-sub">Log your blood test results. See where you sit in the range. Understand what it means for how you learn and recover.</p>
     <div class="bio-form">
@@ -532,7 +562,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <section id="synthesis" class="synthesis">
   <div class="container">
-    <div class="eyebrow">Phase 3</div>
+    <div class="eyebrow">Phase Three · Synthesis</div>
     <h2 class="section-title">Your Profile — Synthesis</h2>
     <p class="section-sub">Where cognitive form meets biology. Your compound protocol.</p>
     <div id="syn-content"></div>
@@ -541,7 +571,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 
 <section id="cocoon">
   <div class="container">
-    <div class="eyebrow">Phase Zero</div>
+    <div class="eyebrow">Phase Zero · The Cocoon</div>
     <h2 class="section-title">The Cocoon.</h2>
     <p class="section-sub">Before you can learn, you must enter the state where learning is possible. Breath is the threshold. Every tradition that ever studied consciousness found the same door — and it opens from the inside, with the breath.</p>
     <div class="cocoon-layout">
@@ -555,18 +585,30 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
           </div>
         </div>
         <div class="breath-rounds" id="breath-rounds"></div>
+        <div class="breath-opts">
+          <div class="blen" id="blen">
+            <button class="blen-b" data-min="3" onclick="setLen(3)">3 min</button>
+            <button class="blen-b on" data-min="6" onclick="setLen(6)">6 min</button>
+            <button class="blen-b" data-min="10" onclick="setLen(10)">10 min</button>
+          </div>
+          <button class="btn-ghost btn-cues" id="btn-cues" onclick="toggleCues()">Cues: Off</button>
+        </div>
         <div class="breath-ctrls">
           <button class="btn-water" id="btn-begin" onclick="startBreathing()" style="padding:12px 28px;font-size:0.85rem;">Begin</button>
           <button class="btn-ghost" id="btn-stop" onclick="stopBreathing()" style="display:none;padding:12px 28px;font-size:0.85rem;">Stop</button>
         </div>
+        <div class="breath-log" id="breath-log"></div>
       </div>
       <div>
+        <div id="tech-reco"></div>
         <div class="eyebrow" style="margin-bottom:16px;">Choose your technique</div>
         <div class="tech-list" id="tech-list"></div>
       </div>
     </div>
     <div class="cocoon-phil">
-      <div class="god-title">The breath is the spirit.</div>
+      <details class="wc-acc"><summary><span class="wc-acc-t">The breath across traditions<span class="wc-acc-sub">Pneuma · Prana · Ruah — and the physiology of the cocoon</span></span></summary>
+      <div class="wc-acc-body">
+      <div class="god-title" style="margin-top:8px;">The breath is the spirit.</div>
       <div class="god-sub">Every civilisation reached the same conclusion independently. The word for breath and the word for spirit are the same word. That is not coincidence. It is convergence on a single truth.</div>
       <div class="cpgrid">
         <div class="cpc">
@@ -589,12 +631,103 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
         <div class="csci-title">The Physiology</div>
         <div class="csci-text">The diaphragm is threaded with vagus nerve fibres. Slow, deep diaphragmatic breathing activates those fibres directly — triggering a parasympathetic shift that drops cortisol, raises serotonin, and opens the brain's capacity for retention and integration. The pineal gland — long associated with the seat of consciousness and called the third eye across traditions — is most active in states of deep stillness. Shallow chest breathing keeps the nervous system in sympathetic dominance: the threat state. You cannot learn well under threat. The cocoon is where you exit threat and enter receive. A caterpillar's cocoon is total stillness before total transformation. What enters the cocoon and what emerges are not the same thing. Two minutes of controlled breath changes your neurochemistry. The traditions discovered this. The science confirmed it. The deeper you breathe, the better the connectivity.</div>
       </div>
+      </div></details>
+      <details class="wc-acc"><summary><span class="wc-acc-t">The water-web — fascia, hydration, release<span class="wc-acc-sub">Why the body's web answers to breath — and practise with the teacher</span></span></summary>
+      <div class="wc-acc-body">
+      <div class="god-title" style="margin-top:8px;">The body is mostly water — and so is its web.</div>
+      <div class="god-sub">Fascia is the connective tissue that wraps every muscle, organ and nerve into one continuous, fluid web. Hydrated, it glides; dry, it binds, and tension sets and stays. Breath is one of the pumps that moves the water through it. This is the teaching of <strong>Jules Horn</strong> and <strong>Human Garage</strong> — hydration, breath and release as the way the body's web stays free. The same knowledge as the breath above, carried one layer deeper into the tissue.</div>
+      <div class="cpgrid">
+        <div class="cpc">
+          <div class="cpc-word">Fascia</div>
+          <div class="cpc-origin">The body's water-web</div>
+          <div class="cpc-text">One unbroken sheet of tissue running from scalp to sole, holding the body in shape — and holding, too, the postures of old strain. Not separate parts but a single fabric: pull one corner and the whole web answers. Where it has dried and bound, movement and feeling narrow.</div>
+        </div>
+        <div class="cpc">
+          <div class="cpc-word">Hydration</div>
+          <div class="cpc-origin">Structural, not only thirst</div>
+          <div class="cpc-text">Fascia holds water like a sponge. Movement and breath pump it through; stillness and stress wring it dry. To hydrate the web is to drink — but also to move it, breathe into it, and release the holds that stop the water reaching the tissue. WaterCycle's name was always pointing here.</div>
+        </div>
+        <div class="cpc">
+          <div class="cpc-word">Release</div>
+          <div class="cpc-origin">Letting the web rehydrate</div>
+          <div class="cpc-text">Human Garage's fascial manoeuvres work the tissue gently until a held line lets go and the water returns. The breath practice above is the threshold; the release is the body following the mind into ease. The same door, opened in the flesh.</div>
+        </div>
+      </div>
+      <style>
+        .teacher-live{margin-top:40px;background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--water);padding:28px 32px;}
+        .tl-head{font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--water);margin-bottom:14px;}
+        .tl-intro{color:var(--sub);font-size:0.95rem;line-height:1.7;margin-bottom:20px;}
+        .tl-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+        .tl-tab{background:var(--bg4);border:1px solid var(--border);color:var(--sub);font-family:inherit;font-size:0.74rem;font-weight:700;letter-spacing:0.4px;padding:9px 14px;border-radius:50px;cursor:pointer;transition:color .15s,background .15s,border-color .15s;}
+        .tl-tab:hover{color:var(--text);border-color:var(--water);}
+        .tl-tab.on{background:var(--water);color:#000;border-color:var(--water);}
+        .tl-caption{font-size:0.82rem;color:var(--water);font-weight:600;margin-bottom:12px;letter-spacing:0.3px;}
+        .tl-stage{position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+        .tl-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+        .tl-play{position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(0,0,0,0.45);border:none;cursor:pointer;color:#fff;font-family:inherit;text-decoration:none;}
+        .tl-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+        .tl-tri{position:relative;z-index:1;font-size:2.6rem;color:var(--water);line-height:1;text-shadow:0 2px 8px rgba(0,0,0,0.7);}
+        .tl-plt{position:relative;z-index:1;font-size:0.95rem;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,0.8);}
+        .tl-prv{position:relative;z-index:1;font-size:0.7rem;color:#e5e5e5;text-shadow:0 1px 4px rgba(0,0,0,0.8);}
+        .tl-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;}
+        .tl-links a{color:var(--water);font-size:0.82rem;font-weight:600;text-decoration:none;}
+        .tl-links a:hover{text-decoration:underline;}
+        .tl-disc{margin-top:16px;font-size:0.72rem;color:var(--muted);line-height:1.5;}
+      </style>
+      <div class="teacher-live">
+        <div class="tl-head">Practice with the teacher &middot; Jules Horn &middot; Human Garage</div>
+        <div class="tl-intro">Jules Horn went from an industrial mechanic in a German village to a New York model — then to chronic pain, and out the other side through fascial release and breath. He is a certified Human Garage fascial-maneuver coach. Pick a practice and run it: the water-web answers to use, not to reading.</div>
+        <div class="tl-tabs" id="tl-tabs">
+          <button class="tl-tab on" data-v="wzef2nA9anw" data-t="15-Minute Full-Body Stress Reset — 3 core maneuvers, 70–80% of the body's held tension">15-min Reset</button>
+          <button class="tl-tab" data-v="aIKk7PSxc5k" data-t="45-Minute Full-Body Fascia Reset — the 10 essential maneuvers">Full 45-min</button>
+          <button class="tl-tab" data-v="nrC5RKXSRh8" data-t="Lower-Body Reset — hips, knees and legs">Lower Body</button>
+          <button class="tl-tab" data-v="CdI6kVjapQc" data-t="Seated Maneuvers + Organ Reset — do it at a desk">Seated</button>
+          <button class="tl-tab" data-v="_8DNLdVzfkw" data-t="Meet Jules Horn — the fascial-maneuver coach">Meet Jules</button>
+          <button class="tl-tab" data-v="O2M2PUGsXBg" data-t="Jules Horn — Fascia, Breathwork &amp; the Journey to Healing">Breath &amp; Healing</button>
+        </div>
+        <div class="tl-caption" id="tl-caption">15-Minute Full-Body Stress Reset — 3 core maneuvers, 70–80% of the body's held tension</div>
+        <div class="tl-stage" id="tl-stage"></div>
+        <div class="tl-links">
+          <a href="https://www.youtube.com/@HumanGarage" target="_blank" rel="noopener noreferrer">Human Garage TV &#8599;</a>
+          <a href="https://www.youtube.com/@Jules_horn" target="_blank" rel="noopener noreferrer">Jules Horn &middot; Mindful Movemend &#8599;</a>
+        </div>
+        <div class="tl-disc">A wellness and self-knowledge practice — not medical treatment. Move within comfort; nothing here diagnoses, cures, or replaces professional care. Each practice opens on YouTube in a new tab.</div>
+      </div>
+      <script>
+        (function(){
+          var tabs=document.getElementById('tl-tabs');
+          if(!tabs) return;
+          var stage=document.getElementById('tl-stage'), cap=document.getElementById('tl-caption'), current='wzef2nA9anw';
+          function showPlay(){
+            stage.innerHTML='';
+            var a=document.createElement('a');
+            a.className='tl-play'; a.href='https://www.youtube.com/watch?v='+current;
+            a.target='_blank'; a.rel='noopener noreferrer';
+            a.setAttribute('aria-label','Watch on YouTube: '+cap.textContent);
+            var img=document.createElement('img');
+            img.className='tl-thumb'; img.src='https://img.youtube.com/vi/'+current+'/hqdefault.jpg';
+            img.alt=''; img.loading='lazy';
+            var tri=document.createElement('span'); tri.className='tl-tri'; tri.innerHTML='&#9658;';
+            var plt=document.createElement('span'); plt.className='tl-plt'; plt.textContent='Play the practice';
+            var prv=document.createElement('span'); prv.className='tl-prv'; prv.textContent='Opens on YouTube in a new tab';
+            a.appendChild(img); a.appendChild(tri); a.appendChild(plt); a.appendChild(prv);
+            stage.appendChild(a);
+          }
+          tabs.addEventListener('click',function(e){
+            var b=e.target.closest('.tl-tab'); if(!b) return;
+            tabs.querySelectorAll('.tl-tab').forEach(function(x){x.classList.remove('on');});
+            b.classList.add('on'); current=b.getAttribute('data-v'); cap.textContent=b.getAttribute('data-t'); showPlay();
+          });
+          showPlay();
+        })();
+      </script>
+      </div></details>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="ft-logo">WaterCycle</div>
+  <div class="ft-logo">Water<span class="cyc">Cycle</span></div>
   <div class="ft-sp">
     <a href="https://github.com/sponsors/The-Architect-Neo" target="_blank" rel="noopener noreferrer" class="sp-gh">&#9825; Sponsor on GitHub</a>
     <a href="https://patreon.com/TheArchitectNeo" target="_blank" rel="noopener noreferrer" class="sp-pt">Support on Patreon</a>
@@ -683,14 +816,19 @@ var SNAMES={V:'Visual',A:'Auditory',R:'Reading',K:'Kinesthetic'};
 var SCOLS={V:'var(--vis)',A:'var(--aud)',R:'var(--rw)',K:'var(--kin)'};
 function getDomStyle(w){var o=['V','A','R','K'],mx=Math.max(w.V,w.A,w.R,w.K);for(var i=0;i<o.length;i++){if(w[o[i]]===mx)return o[i];}return 'V';}
 var TECHNIQUES=[
+  {id:'name',name:'The Name (Six-Breath)',pattern:'Yod-Heh · Vav-Heh — 6 · 6',desc:"The Tetragrammaton ridden on the breath. Inhale the first half of the Name, exhale the second — the four letters across one slow cycle, about five a minute, deep in the resonance band. Abulafia's threshold practice. Sit for six minutes.",phases:[{lbl:'Inhale — Yod-Heh',dur:6,sc:1.55},{lbl:'Exhale — Vav-Heh',dur:6,sc:1.0}]},
   {id:'box',name:'Box Breathing',pattern:'4 · 4 · 4 · 4',desc:'Navy SEAL regulation protocol. Equal phases. Resets the nervous system in under two minutes.',phases:[{lbl:'Inhale',dur:4,sc:1.55},{lbl:'Hold',dur:4,sc:1.55},{lbl:'Exhale',dur:4,sc:1.0},{lbl:'Hold',dur:4,sc:1.0}]},
   {id:'478',name:'4–7–8',pattern:'4 · 7 · 8',desc:"Andrew Weil's method. Deep parasympathetic activation. Use before sleep or when cortisol is elevated.",phases:[{lbl:'Inhale',dur:4,sc:1.55},{lbl:'Hold',dur:7,sc:1.55},{lbl:'Exhale',dur:8,sc:1.0}]},
   {id:'sigh',name:'Physiological Sigh',pattern:'2 + 1 · exhale 8',desc:'Double inhale through the nose, long slow exhale. Fastest known acute stress reduction. Huberman Lab.',phases:[{lbl:'Inhale',dur:2,sc:1.35},{lbl:'Inhale +',dur:1,sc:1.55},{lbl:'Exhale',dur:8,sc:1.0}]},
   {id:'coherent',name:'Coherent Breathing',pattern:'5 · 5',desc:"Resonance frequency breathing at 0.1 Hz. Maximises heart rate variability — the body's coherence indicator.",phases:[{lbl:'Inhale',dur:5,sc:1.55},{lbl:'Exhale',dur:5,sc:1.0}]},
-  {id:'wim',name:'Wim Hof (Modified)',pattern:'2 · 2 — 30 cycles',desc:'Power breathing cycle. Not for water or driving. Oxygenates tissue and shifts blood alkalinity. Modified for safety.',phases:[{lbl:'Power In',dur:2,sc:1.6},{lbl:'Release',dur:2,sc:1.0}]}
+  {id:'wim',name:'Wim Hof (Modified)',pattern:'2 · 2 — 30 cycles',desc:'Power breathing cycle. Not for water or driving. Oxygenates tissue and shifts blood alkalinity. Modified for safety.',phases:[{lbl:'Power In',dur:2,sc:1.6},{lbl:'Release',dur:2,sc:1.0}]},
+  {id:'ujjayi',name:'Ujjayi (Ocean Breath)',pattern:'5 · 6 — throat-narrowed',desc:'Pranayama. Breathe through a gently narrowed throat so the air sounds like surf. The sound is the anchor — steady, audible, oceanic. Lengthens and smooths the breath.',phases:[{lbl:'Inhale (ocean)',dur:5,sc:1.55},{lbl:'Exhale (ocean)',dur:6,sc:1.0}]},
+  {id:'bhramari',name:'Bhramari (Bee Breath)',pattern:'4 · hum 8',desc:'Pranayama. Normal inhale, then hum the whole exhale like a bee. Raises nasal nitric oxide and vagal tone fast. The breath for the ear — sound carries it.',phases:[{lbl:'Inhale',dur:4,sc:1.55},{lbl:'Hum (exhale)',dur:8,sc:1.0}]},
+  {id:'nadi',name:'Nadi Shodhana (Alternate Nostril)',pattern:'4 · 4 · 4 · 4 — switch sides',desc:'Pranayama. Close the right nostril, inhale left; close left, exhale right; inhale right; exhale left. Balances the two currents. Use thumb and ring finger to switch.',phases:[{lbl:'Inhale left',dur:4,sc:1.55},{lbl:'Exhale right',dur:4,sc:1.0},{lbl:'Inhale right',dur:4,sc:1.55},{lbl:'Exhale left',dur:4,sc:1.0}]},
+  {id:'ebb',name:'The Ebb (Emotional Discharge)',pattern:'sigh · shake · ground',desc:'For high emotional tension — grief, hurt, the long ache that will not lift. A somatic discharge: double-inhale sighs to dump the charge, deliberate shaking to release what the body is holding, then a low hum and grounding to settle. Do it where you can move freely.',phases:[{lbl:'Double inhale (nose)',dur:2,sc:1.5},{lbl:'Top-up inhale',dur:1,sc:1.6},{lbl:'Long exhale — sigh it out',dur:8,sc:1.0},{lbl:'Shake hands & shoulders loose',dur:6,sc:1.1},{lbl:'Inhale slow',dur:4,sc:1.5},{lbl:'Exhale — hum it low',dur:8,sc:1.0},{lbl:'Hand on heart, feet on floor',dur:6,sc:1.0}]}
 ];
 
-var S={vark:null,bt:null,rh:null,bio:[],qans:{},qidx:0,btech:null,brunning:false,btimer:null,brnd:0};
+var S={vark:null,bt:null,rh:null,bio:[],qans:{},qidx:0,btech:null,brunning:false,btimer:null,brnd:0,cues:false,btarget:6,bstart:0,actx:null};
 
 try{
   var t=localStorage.getItem('wc_theme')||'dark';
@@ -944,6 +1082,7 @@ function renderBio(){
 }
 
 function renderSynth(){
+  try{renderRecommend();}catch(e){}
   try{
     var el=document.getElementById('syn-content');if(!el)return;
     if(!S.vark&&!S.bt){
@@ -960,11 +1099,12 @@ function renderSynth(){
       if(zone.col==='#ef4444'||zone.col==='#f59e0b')flags.push({name:m.name,label:zone.label,col:zone.col});
     });
     var h='<div class="syn-card">';
-    h+='<div class="syn-badges"><span class="syn-badge" style="color:'+V.col+';border-color:'+V.col+';background:'+V.col.replace('var(--','').replace(')','')+'18">'+V.name+' — '+V.arch+'</span>';
+    h+='<div class="syn-badges"><span class="syn-badge" style="color:'+V.col+';border-color:'+V.col+'">'+V.name+' — '+V.arch+'</span>';
     h+='<span class="syn-badge" style="color:'+B.col+';border-color:'+B.col+'">'+B.name+'</span></div>';
     h+='<div class="syn-h">'+V.arch+' meets '+B.arch+'</div>';
     h+='<div class="syn-sub">'+V.name+' cognitive form + '+B.name+'</div>';
     h+='<div class="syn-body">'+text+'</div>';
+    h+='<a href="#cocoon" class="syn-link">See your matched breath in The Cocoon &rarr;</a>';
     if(flags.length){
       h+='<div class="syn-bio-sec"><div class="syn-bio-ttl">Active biomarker flags</div><div class="syn-bio-chips">';
       flags.forEach(function(f){h+='<span class="syn-bio-chip" style="color:'+f.col+';border-color:'+f.col+'">'+f.name+': '+f.label+'</span>';});
@@ -1011,7 +1151,7 @@ function setCircle(sc,dur){
 function startBreathing(){
   try{
     if(S.brunning)return;
-    S.brunning=true;S.brnd=0;
+    S.brunning=true;S.brnd=0;S.bstart=Date.now();
     document.getElementById('btn-begin').style.display='none';
     document.getElementById('btn-stop').style.display='inline-block';
     runCycle();
@@ -1020,7 +1160,10 @@ function startBreathing(){
 
 function runCycle(){
   if(!S.brunning)return;
-  try{S.brnd++;document.getElementById('breath-rounds').textContent='Round '+S.brnd;runPhase(0);}catch(e){}
+  try{
+    if(S.btarget&&S.bstart&&(Date.now()-S.bstart)>=S.btarget*60000){finishSession();return;}
+    S.brnd++;document.getElementById('breath-rounds').textContent='Round '+S.brnd;runPhase(0);
+  }catch(e){}
 }
 
 function runPhase(pi){
@@ -1031,6 +1174,7 @@ function runPhase(pi){
     var ph=phases[pi];
     document.getElementById('bph-lbl').textContent=ph.lbl;
     setCircle(ph.sc,ph.dur);
+    if(S.cues)playCue(ph);
     var rem=ph.dur;
     document.getElementById('bph-count').textContent=rem;
     var iv=setInterval(function(){
@@ -1056,6 +1200,122 @@ function stopBreathing(){
     S.brnd=0;
   }catch(e){}
 }
+
+function recommendTech(){
+  if(!S.vark)return null;
+  var flags=0;
+  S.bio.forEach(function(r){
+    var m=MARKERS.find(function(x){return x.id===r.mid;});if(!m)return;
+    var zone=m.zones.find(function(z){return r.val<=z.max;})||m.zones[m.zones.length-1];
+    if(zone.col==='#ef4444'||zone.col==='#f59e0b')flags++;
+  });
+  var id,why;
+  if(flags){
+    id='sigh';why='Your active biomarker flags read as elevated load. Discharge it first — the physiological sigh is the fastest acute reset before anything deeper.';
+  }else{
+    switch(S.vark){
+      case 'V':id='box';why='Visual form learns through structure. Box breathing gives you a shape to follow — four equal sides, a square you can see.';break;
+      case 'A':id='bhramari';why='Auditory form rides sound. The bee breath turns the whole exhale into a hum you hear and feel.';break;
+      case 'R':id='name';why='Reading form anchors on letters. The Name hands you four to carry across the breath — text as the thread.';break;
+      case 'K':id='wim';why='Kinesthetic form needs the body in it. Wim Hof is the most physical of the set. Never in water or while driving.';break;
+      default:id='coherent';why='Coherent breathing settles the system at its resonance — a clean default for any form.';
+    }
+  }
+  if(S.bt==='A'&&id==='wim'){id='coherent';why='Type A accumulates cortisol and recovers poorly from intensity. Coherent breathing gives steadiness without the load.';}
+  if(S.bt)why+=' '+bloodLine(S.bt);
+  return {id:id,why:why};
+}
+function bloodLine(bt){
+  switch(bt){
+    case 'O':return 'Type O carries physical intensity well — push the pace if it serves you.';
+    case 'A':return 'Type A does best kept calm and regular — protect the recovery.';
+    case 'B':return 'Type B adapts across modes — vary it as the day asks.';
+    case 'AB':return 'Type AB suits short, deliberate sessions over long ones.';
+    default:return '';
+  }
+}
+function renderRecommend(){
+  try{
+    var el=document.getElementById('tech-reco');if(!el)return;
+    var r=recommendTech();
+    if(!r){el.innerHTML='<div class="reco-locked">Take the Thinkier and add your blood type — a breath matched to your profile appears here. Until then, choose any below.</div>';return;}
+    var t=TECHNIQUES.find(function(x){return x.id===r.id;});if(!t){el.innerHTML='';return;}
+    var h='<div class="reco"><div class="reco-ey">Matched to your profile</div>';
+    h+='<div class="reco-name">'+t.name+'</div>';
+    h+='<div class="reco-why">'+r.why+'</div>';
+    h+='<button class="btn-water" style="padding:9px 18px;font-size:0.78rem;" onclick="selectTech(\''+t.id+'\')">Use this breath</button></div>';
+    el.innerHTML=h;
+  }catch(e){}
+}
+function setLen(m){
+  S.btarget=m;
+  try{localStorage.setItem('wc_blen',m);}catch(e){}
+  try{document.querySelectorAll('.blen-b').forEach(function(b){b.classList.toggle('on',parseInt(b.getAttribute('data-min'),10)===m);});}catch(e){}
+}
+function toggleCues(){
+  S.cues=!S.cues;
+  try{localStorage.setItem('wc_cues',S.cues?'1':'0');}catch(e){}
+  var b=document.getElementById('btn-cues');
+  if(b){b.textContent='Cues: '+(S.cues?'On':'Off');b.classList.toggle('on',S.cues);}
+  if(S.cues){try{if(!S.actx)S.actx=new (window.AudioContext||window.webkitAudioContext)();if(S.actx.state==='suspended')S.actx.resume();}catch(e){}}
+}
+function playCue(ph){
+  try{
+    var up=ph.sc>1;
+    if(navigator.vibrate)navigator.vibrate(up?45:25);
+    if(!S.actx)return;
+    var lbl=(ph.lbl||'').toLowerCase();
+    var f=lbl.indexOf('hold')>=0?432:(lbl.indexOf('in')>=0?528:396);
+    var o=S.actx.createOscillator(),g=S.actx.createGain(),t=S.actx.currentTime;
+    o.type='sine';o.frequency.value=f;o.connect(g);g.connect(S.actx.destination);
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.11,t+0.04);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.5);
+    o.start(t);o.stop(t+0.52);
+  }catch(e){}
+}
+function logSession(){
+  try{
+    var raw=localStorage.getItem('wc_sessions');
+    var d=raw?JSON.parse(raw):{count:0,streak:0,last:null};
+    var today=new Date().toISOString().slice(0,10);
+    if(d.last!==today){
+      var y=new Date(Date.now()-86400000).toISOString().slice(0,10);
+      d.streak=(d.last===y)?(d.streak+1):1;d.last=today;
+    }
+    d.count=(d.count||0)+1;
+    localStorage.setItem('wc_sessions',JSON.stringify(d));
+    renderLog();
+  }catch(e){}
+}
+function renderLog(){
+  try{
+    var el=document.getElementById('breath-log');if(!el)return;
+    var raw=localStorage.getItem('wc_sessions');if(!raw){el.textContent='';return;}
+    var d=JSON.parse(raw);
+    el.textContent=d.count+' session'+(d.count===1?'':'s')+' · '+d.streak+'-day streak';
+  }catch(e){}
+}
+function finishSession(){
+  try{
+    S.brunning=false;
+    if(S.btimer){clearInterval(S.btimer);S.btimer=null;}
+    setCircle(1,0.4);
+    document.getElementById('bph-lbl').textContent='Complete';
+    document.getElementById('bph-count').textContent='';
+    document.getElementById('breath-rounds').textContent=S.btarget+'-minute session complete — '+S.brnd+' rounds';
+    document.getElementById('btn-begin').style.display='inline-block';
+    document.getElementById('btn-stop').style.display='none';
+    if(S.cues)playCue({lbl:'hold',sc:1.0});
+    logSession();
+    S.brnd=0;
+  }catch(e){}
+}
+try{
+  var _bl=localStorage.getItem('wc_blen');if(_bl)S.btarget=parseInt(_bl,10)||6;setLen(S.btarget);
+  var _bc=localStorage.getItem('wc_cues');S.cues=(_bc==='1');var _cb=document.getElementById('btn-cues');if(_cb){_cb.textContent='Cues: '+(S.cues?'On':'Off');_cb.classList.toggle('on',S.cues);}
+  renderLog();
+}catch(e){}
 
 try{renderSynth();}catch(e){}
 </script>
